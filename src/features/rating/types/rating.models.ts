@@ -1,0 +1,1 @@
+export type TRatingMode = "my" | "search";

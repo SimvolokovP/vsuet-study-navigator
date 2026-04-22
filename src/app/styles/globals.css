@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+/* @custom-variant dark (&:is([data-theme="dark"] *)); */
+
+:root {
+  /* Layout */
+  --sider-width: 120px;
+  --mobile-menu-height: 68px;
+
+  --background: 220 33% 98%;
+  --foreground: 221 11% 46%;
+  --inner: 0 0% 0%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 241 99% 79%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 100%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 62%;
+  --muted-foreground: 221 11% 46%;
+  --accent: 241 99% 79%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 100% 65%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 195 25% 96%;
+  --input: 195 25% 96%;
+  --ring: 241 99% 79%;
+  --radius: 0.5rem;
+
+  --practice-item-border: #2ecc71;
+  --lecture-item-border: #9b59b6;
+  --lab-item-border: #3498db;
+
+  --practice-item-background: #2ecc711a;
+  --lecture-item-background: #9b59b61a;
+  --lab-item-background: #3498db1a;
+
+  --success: 145 63% 49%;
+  --info: 204 70% 53%;
+  --warning: 38 92% 50%;
+  --error: 6 78% 57%;
+
+  --background-grid:
+    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    #f8f9fb;
+}
+
+.dark {
+  --background: 0 0% 8%;
+  --foreground: 215 25% 81%;
+  --inner: 0 0% 100%;
+  --card: 0 0% 11%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 11%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 241 100% 77%;
+  --primary-foreground: 214 29% 6%;
+  --secondary: 0 0% 11%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 214 15% 65%;
+  --muted-foreground: 215 25% 81%;
+  --accent: 241 100% 77%;
+  --accent-foreground: 214 29% 6%;
+  --destructive: 0 100% 71%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 16%;
+  --input: 0 0% 10%;
+  --ring: 241 100% 77%;
+
+  --practice-item-border: #2ecc71;
+  --lecture-item-border: #9b59b6;
+  --lab-item-border: #3498db;
+
+  --practice-item-background: #2ecc705b;
+  --lecture-item-background: #9c59b65a;
+  --lab-item-background: #3498db47;
+
+  --background-grid:
+    linear-gradient(rgba(80, 80, 80, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80, 80, 80, 0.07) 1px, transparent 1px), #141414;
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-inner: hsl(var(--inner));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-practice: hsl(var(--practice));
+  --color-lecture: hsl(var(--lecture));
+  --color-lab: hsl(var(--lab));
+
+  --color-success: hsl(var(--success));
+  --color-info: hsl(var(--info));
+  --color-warning: hsl(var(--warning));
+  --color-error: hsl(var(--error));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+body {
+  background: var(--background-grid);
+  background-size:
+    50px 50px,
+    50px 50px,
+    100% 100%;
+  background-attachment: fixed, fixed, scroll;
+
+  color: hsl(var(--inner));
+
+  @media (max-width: 1200px) {
+    font-size: 16px;
+  }
+
+  /* @media (max-width: 768px) {
+    font-size: 14px;
+  } */
+}
+
+.card {
+  @apply bg-secondary py-4 px-6 border-2 border-border rounded-sm min-w-77.5;
+}
+
+.darkBack {
+  background-color: rgba(52, 52, 52, 0.7);
+}
+
+.slide {
+  animation: slideAnim 0.5s;
+}
+
+.anim-hover {
+  @apply hover:shadow-sm transition-all duration-300;
+}
+
+@keyframes slideAnim {
+  from {
+    transform: translateX(50px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.container {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.lecture {
+  background-color: var(--lecture-item-background);
+  border-left: 4px solid var(--lecture-item-border);
+}
+
+.practice {
+  background-color: var(--practice-item-background);
+  border-left: 4px solid var(--practice-item-border);
+}
+
+.lab {
+  background-color: var(--lab-item-background);
+  border-left: 4px solid var(--lab-item-border);
+}

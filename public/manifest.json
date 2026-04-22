@@ -1,0 +1,28 @@
+{
+  "name": "ВГУИТ Расписание",
+  "short_name": "ВГУИТ Расписание",
+  "description": "Актуальное расписание ВГУИТ: студенты и преподаватели легко находят пары, аудитории и изменения.",
+  "start_url": "/",
+  "id": "/",
+  "lang": "ru",
+  "display": "standalone",
+  "background_color": "#f8f9fb",
+  "theme_color": "#1c1c1c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "/",
+  "prefer_related_applications": false
+}
