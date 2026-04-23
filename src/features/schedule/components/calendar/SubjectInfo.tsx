@@ -1,6 +1,6 @@
 import { getShortTeacherName, getTypeShort } from "@/shared/helpers/subjectHelpers";
 import { ISubject } from "@/shared/types/subject.model";
-import { RemainingTimeBadge } from "./RemainingTimeBadge";
+import { RemainingTimeBadge } from "../RemainingTimeBadge";
 
 export function SubjectInfo({ subjects }: { subjects?: ISubject[] }) {
   const baseSubject = subjects && subjects[0];

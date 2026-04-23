@@ -73,7 +73,7 @@ export function ScheduleCalendarWrapper({
                 "sticky top-0 z-5 border-b border-muted/50 p-1 md:p-2 text-center font-medium",
                 day.dateString === today ? "border-b-2" : "",
                 day.dateString === selectedDate
-                  ? "border-b"
+                  ? "border-b-2"
                   : "",
               )}
             >
@@ -99,10 +99,10 @@ export function ScheduleCalendarWrapper({
                     key={`${day.dateString}-${timeSlot.start_time}`}
                     className={cn(
                       "flex flex-col gap-1 border-b border-muted/50 border-r p-1 min-h-15 md:min-h-20",
-                      day.dateString === today ? "bg-selected" : "",
+                      day.dateString === today ? "bg-muted/20" : "",
                       day.dateString === selectedDate
-                        ? "border-muted/50 bg-muted/20"
-                        : "border-muted/50",
+                        ? "border-r-2"
+                        : "",
                     )}
                   >
                     {subjectGroups.map((subjects, index) => (

@@ -18,8 +18,8 @@ import {
   TypeViewMode,
 } from "@/features/types/schedule.models";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
-import { ScheduleListWrapper } from "./ScheduleListWrapper";
-import { ScheduleCalendarWrapper } from "./ScheduleCalendarWrapper";
+import { ScheduleListWrapper } from "./list/ScheduleListWrapper";
+import { ScheduleCalendarWrapper } from "./calendar/ScheduleCalendarWrapper";
 
 interface ScheduleWrapperProps {
   viewMode: TypeViewMode;

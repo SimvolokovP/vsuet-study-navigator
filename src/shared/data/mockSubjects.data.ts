@@ -384,6 +384,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       { id: 50009, date: "2026-05-22T08:00:00+03:00" },
     ],
   },
+
   {
     id: 108,
     name: "Математическое моделирование",

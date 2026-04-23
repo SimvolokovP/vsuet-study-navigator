@@ -107,6 +107,7 @@ export function CertificateForm() {
         ]}
         label="Факультет"
         value={formData.faculty}
+        defaultValue="УИТС"
         onChange={(e) => handleInputChange("faculty", e.target.value)}
         error={errors.faculty ? { message: errors.faculty } : undefined}
         required

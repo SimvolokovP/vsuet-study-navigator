@@ -8,7 +8,7 @@ import {
   renderWithSeparators,
 } from "@/shared/helpers/renderItemHelpers";
 import { TypeSchduleType } from "@/features/types/schedule.models";
-import { RemainingTimeBadge } from "./RemainingTimeBadge";
+import { RemainingTimeBadge } from "../RemainingTimeBadge";
 
 export function ScheduleListItem({
   subjects,
