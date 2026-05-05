@@ -7,8 +7,7 @@ import {
   Award,
   Calendar,
   CalendarSearch,
-  GraduationCap,
-  Settings,
+  DoorOpen,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -55,14 +54,6 @@ export function MainPage() {
                 </Link>
               </div>
             )}
-            {userInLocalStorage && (
-              <Link
-                className="absolute right-4 top-4 text-foreground"
-                href={PAGES.PROFILE}
-              >
-                <Settings size={16} />
-              </Link>
-            )}
           </div>
           <div className="flex flex-col gap-4">
             <div className="font-bold">Учебное пространство</div>
@@ -103,8 +94,8 @@ export function MainPage() {
                 </CarouselItem>
 
                 <CarouselItem className="basis-[70%] md:basis-1/3 text-inner">
-                  <div className="bg-card border border-border rounded-xl p-4 flex flex-col gap-3 h-full opacity-50">
-                    <GraduationCap size={32} />
+                  <div className="bg-[#DD5764]/10 text-[#DD5764] border border-border rounded-xl p-4 flex flex-col gap-3 h-full opacity-50">
+                    <DoorOpen size={32} />
                     <div className="font-semibold">
                       Поиск свободной аудитории
                     </div>

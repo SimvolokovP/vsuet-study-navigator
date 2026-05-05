@@ -23,7 +23,7 @@ export function Layout({
   const router = useRouter();
 
   return (
-    <div className="container">
+    <div className="h-full">
       <div className="shrink-0 pt-4 md:pt-9 px-1 md:px-2">
         <div className="md:hidden flex w-full items-center justify-between pb-2">
           <div className="w-10">
@@ -44,7 +44,7 @@ export function Layout({
         <p className="font-normal text-sm md:text-lg mb-2">{description}</p>
       </div>
 
-      <div className="flex-1 px-1 md:px-8 pb-19 md:pb-9 overflow-auto">
+      <div className="h-full px-1 md:px-8 pb-19 md:pb-9 overflow-auto">
         {children}
       </div>
     </div>

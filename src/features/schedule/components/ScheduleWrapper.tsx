@@ -89,7 +89,7 @@ export function ScheduleWrapper({
   }
 
   return (
-    <div ref={containerRef} tabIndex={0}>
+    <div className="h-full" ref={containerRef} tabIndex={0}>
       {viewMode === "list" && (
         <>
           {isPending ? (

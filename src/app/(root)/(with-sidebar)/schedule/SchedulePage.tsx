@@ -129,7 +129,7 @@ export function SchedulePage() {
         <ModalContent className="p-4">
           <ModalTitle>Демо версия</ModalTitle>
           <div className="space-y-4">
-            <p className="text-muted-foreground"> 
+            <p className="text-muted-foreground">
               Это{" "}
               <span className="font-semibold text-foreground">
                 демонстрационная версия
@@ -150,16 +150,15 @@ export function SchedulePage() {
           </div>
         </ModalContent>
       </Modal>
-      <div>
-        <ScheduleWrapper
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          viewMode={viewMode}
-          data={weeklyScheduleData}
-          error={error}
-          isPending={isPending}
-        />
-      </div>
+
+      <ScheduleWrapper
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        viewMode={viewMode}
+        data={weeklyScheduleData}
+        error={error}
+        isPending={isPending}
+      />
     </Layout>
   );
 }

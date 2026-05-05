@@ -33,7 +33,7 @@ function filterSubjectsByFilters(
   return subjects.filter((subject) => {
     if (group && subject.group.name !== group) return false;
 
-    if (subgroup && subject.subgroup !== 0) {
+    if (subgroup && subject.subgroup !== 3) {
       if (subject.subgroup.toString() !== subgroup) return false;
     }
 

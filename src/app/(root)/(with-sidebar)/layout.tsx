@@ -22,7 +22,7 @@ export default function Layout({
           )}
         >
           <div className="min-h-full flex flex-col overflow-hidden">
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 container">{children}</main>
           </div>
         </div>
 
