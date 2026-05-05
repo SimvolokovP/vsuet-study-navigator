@@ -1,11 +1,11 @@
 import { PAGES } from "@/config/pages-url.config";
 import {
-  ClipboardClock,
   LucideIcon,
-  Search,
   Settings,
   Award,
   SwatchBook,
+  Home,
+  Calendar,
 } from "lucide-react";
 
 export interface IMenuItem {
@@ -15,8 +15,9 @@ export interface IMenuItem {
 }
 
 export const MENU: IMenuItem[] = [
-  { href: PAGES.HOME, label: "Расписание", icon: ClipboardClock },
-  { href: PAGES.SEARCH, label: "Поиск", icon: Search },
+  { href: PAGES.HOME, label: "Главная", icon: Home },
+  { href: PAGES.SCHEDULE, label: "Расписание", icon: Calendar },
+  // { href: PAGES.SEARCH, label: "Поиск", icon: Search },
   // { href: PAGES.TEACHERS, label: "Преподаватели", icon: UserRoundSearch },
   { href: PAGES.RATING, label: "Рейтинг", icon: Award },
   { href: PAGES.DIRECTORY, label: "Справочник", icon: SwatchBook },

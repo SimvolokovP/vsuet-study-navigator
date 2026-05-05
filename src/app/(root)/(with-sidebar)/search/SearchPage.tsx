@@ -9,12 +9,12 @@ import { TypeViewMode } from "@/features/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
-import { Button } from "@/components/ui/button";
 import { SidePanel } from "@/components/ui/side-panel";
 import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-schedule";
 import { FilterScheduleForm } from "@/features/schedule/components/forms/FilterScheduleForm";
 import { Badge } from "@/components/ui/badge";
 import { useMockSearchedSchedule } from "@/features/schedule/hooks/mock/use-mock-searched-schedule";
+import { Button } from "@/components/ui/button";
 
 export function SearchPage() {
   const [isModalFilterForm, setIsModalFilterForm] = useState<boolean>(false);
@@ -79,22 +79,31 @@ export function SearchPage() {
   return (
     <Layout
       title="Поиск"
-      actions={
-        <div className="flex flex-wrap items-start gap-2">
-          <Badge
-            isHide={!searchTriggered}
-            className="w-4 h-4"
-            text={getFilterParamsCount(filterParams).toString()}
+      rightButton={
+        <Badge
+          isHide={!searchTriggered}
+          className="w-4 h-4"
+          text={getFilterParamsCount(filterParams).toString()}
+        >
+          <Button
+            onClick={() => setIsModalFilterForm(true)}
+            className="block md:hidden"
+            size={"sm"}
           >
-            <Button
-              onClick={() => setIsModalFilterForm(true)}
-              type="button"
-              variant="default"
-            >
-              <Funnel />
-              <span>Фильтры</span>
-            </Button>
-          </Badge>
+            <Funnel size={20} />
+          </Button>
+          <Button
+            onClick={() => setIsModalFilterForm(true)}
+            variant={"default"}
+            className="hidden md:block"
+          >
+            <Funnel size={24} />
+          </Button>
+        </Badge>
+      }
+      withBackButton
+      actions={
+        <div className="">
           {searchTriggered && (
             <ScheduleActions
               dataError={error}

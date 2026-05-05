@@ -13,6 +13,7 @@ import { Layout } from "@/layout/Layout";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import dayjs from "dayjs";
+import { Search } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -63,7 +64,19 @@ export function SchedulePage() {
 
   if (!userInLocalStorage) {
     return (
-      <Layout title="Расписание">
+      <Layout
+        title="Расписание"
+        rightButton={
+          <Link href={PAGES.SEARCH}>
+            <Button className="block md:hidden" variant={"default"} size={"sm"}>
+              <Search size={20} />
+            </Button>
+            <Button variant={"default"} className="hidden md:block">
+              <Search size={24} />
+            </Button>
+          </Link>
+        }
+      >
         <div className="w-full flex justify-center">
           <div className="max-w-170">
             <ErrorMessage
@@ -79,7 +92,7 @@ export function SchedulePage() {
                 <Button variant="primary">Вход в систему</Button>
               </Link>
               <Link href={PAGES.SEARCH}>
-                <Button>Расписание</Button>
+                <Button>Поиск расписания</Button>
               </Link>
             </div>
           </div>
@@ -91,6 +104,16 @@ export function SchedulePage() {
   return (
     <Layout
       title="Расписание"
+      rightButton={
+        <Link href={PAGES.SEARCH}>
+          <Button className="block md:hidden" variant={"default"} size={"sm"}>
+            <Search size={20} />
+          </Button>
+          <Button variant={"default"} className="hidden md:block">
+            <Search size={24} />
+          </Button>
+        </Link>
+      }
       actions={
         <ScheduleActions
           dataError={null}
@@ -106,7 +129,7 @@ export function SchedulePage() {
         <ModalContent className="p-4">
           <ModalTitle>Демо версия</ModalTitle>
           <div className="space-y-4">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground"> 
               Это{" "}
               <span className="font-semibold text-foreground">
                 демонстрационная версия

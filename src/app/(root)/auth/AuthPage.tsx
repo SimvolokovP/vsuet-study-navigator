@@ -8,7 +8,7 @@ export function AuthPage() {
   return (
     <div className="h-screen w-full">
       <div className="flex items-center justify-center h-full">
-        <div className="card anim-hover">
+        <div className="bg-card border border-border rounded-xl p-4 min-w-77.5 anim-hover">
           <div className="flex flex-col items-center">
             <div className="mb-3">
               <Logo />

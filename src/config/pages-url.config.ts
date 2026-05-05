@@ -4,6 +4,7 @@ export const PAGES = {
   root: rootPath,
   AUTH: "/auth",
   HOME: `${rootPath}`,
+  SCHEDULE: "/schedule",
   SEARCH: `/search`,
   RATING: "/rating",
   PROFILE: "/profile",

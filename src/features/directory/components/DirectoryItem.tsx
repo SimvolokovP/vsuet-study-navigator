@@ -18,13 +18,13 @@ export function DirectoryItem({
     <>
       {!disabled && href ? (
         <Link href={href}>
-          <div className="w-full flex items-center gap-4 whitespace-nowrap rounded-md font-medium justify-start h-12 md:h-20 text-lg md:text-2xl px-4 bg-card text-card-foreground border border-border shadow-sm anim-hover">
+          <div className="w-full flex items-center gap-4 whitespace-nowrap rounded-xl font-medium justify-start h-12 md:h-20 text-lg md:text-2xl px-4 bg-card text-card-foreground border border-border shadow-sm anim-hover">
             <Icon className="text-xl md:text-2xl" />
             {title}
           </div>
         </Link>
       ) : (
-        <div className="w-full opacity-50 flex items-center gap-4 whitespace-nowrap rounded-md font-medium justify-start h-12 md:h-20 text-lg md:text-2xl px-4 bg-card text-card-foreground border border-border shadow-sm anim-hover">
+        <div className="w-full opacity-50 flex items-center gap-4 whitespace-nowrap rounded-xl font-medium justify-start h-12 md:h-20 text-lg md:text-2xl px-4 bg-card text-card-foreground border border-border shadow-sm anim-hover">
           <Icon className="text-xl md:text-2xl" />
           {title}
         </div>

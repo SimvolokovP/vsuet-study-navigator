@@ -11,7 +11,7 @@ export function SubjectInfo({ subjects }: { subjects?: ISubject[] }) {
 
   return (
     <div>
-      <div className="max-w-16">
+      <div className="max-w-10">
         <RemainingTimeBadge subjects={subjects} />
       </div>
       <div className="font-bold">

@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { MainPage } from "./MainPage";
+import { SchedulePage } from "./SchedulePage";
 
 export const metadata: Metadata = {
-  title: "Главная",
+  title: "Расписание",
 };
 
 export default function Home() {
-  return <MainPage />;
+  return <SchedulePage />;
 }

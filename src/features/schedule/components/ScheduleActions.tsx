@@ -22,17 +22,17 @@ export function ScheduleActions({
   setSelectedDate,
 }: ScheduleActionsProps) {
   return (
-    <div className="flex flex-col gap-1">
-      <ViewModeToggler
-        disabled={isDataPending || !!dataError}
-        onViewModeChange={onViewModeChange}
-        viewMode={viewMode}
-        isPending={isDataPending}
-      />
+    <div className="flex gap-2 w-full md:w-auto justify-between md:justify-end">
       <ResetDateButton
         onDateChange={setSelectedDate}
         scheduleMode={viewMode}
         selectedDate={selectedDate}
+        isPending={isDataPending}
+      />
+      <ViewModeToggler
+        disabled={isDataPending || !!dataError}
+        onViewModeChange={onViewModeChange}
+        viewMode={viewMode}
         isPending={isDataPending}
       />
     </div>

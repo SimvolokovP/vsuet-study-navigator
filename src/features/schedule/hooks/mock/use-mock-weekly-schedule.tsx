@@ -31,7 +31,7 @@ function filterSubjectsByGroupAndDateRange(
   return subjects.filter((subject) => {
     const isGroupMatch = subject.group.name === group;
     const isSubgroupMatch =
-      subject.subgroup === 0 || subject.subgroup.toString() === subGroup;
+      subject.subgroup === 3 || subject.subgroup.toString() === subGroup;
 
     if (!isGroupMatch || !isSubgroupMatch) return false;
 

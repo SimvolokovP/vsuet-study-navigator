@@ -32,6 +32,7 @@ const ModalContent = React.forwardRef<
   <ModalPortal>
     <ModalOverlay />
     <DialogPrimitive.Content
+      aria-describedby={props["aria-describedby"] || undefined}
       ref={ref}
       className={cn(
         "fixed z-50 grid gap-4 bg-card shadow-lg",

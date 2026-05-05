@@ -29,9 +29,9 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between bg-secondary py-2 px-4 border-2 border-border transition-all duration-200 cursor-pointer group outline-none",
-        "data-[state=open]:border-transparent data-[state=open]:rounded-t-sm",
-        "data-[state=closed]:border-border data-[state=closed]:rounded-sm data-[state=closed]:hover:shadow-sm",
+        "flex flex-1 items-center justify-between bg-card py-2 px-4 border border-border transition-all duration-200 cursor-pointer group outline-none",
+        "data-[state=open]:border-transparent data-[state=open]:rounded-t-xl",
+        "data-[state=closed]:border-border data-[state=closed]:rounded-xl data-[state=closed]:hover:shadow-sm",
         className,
       )}
       {...props}

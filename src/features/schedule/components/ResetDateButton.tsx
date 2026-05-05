@@ -35,8 +35,9 @@ export function ResetDateButton({
         <Skeleton />
       ) : (
         <Button
-          className={cn("", className)}
+          className={cn("md:h-9", className)}
           variant="default"
+          size={"sm"}
           disabled={isTodaySelected}
           onClick={handleTodayClick}
         >

@@ -22,13 +22,14 @@ export function ViewModeToggler({
   isPending = false,
 }: ViewModeTogglerProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div>
       {isPending ? (
         <>
           <Skeleton className="w-23.5 h-8" />
         </>
       ) : (
         <Toggler
+          className=""
           toggleList={viewModeItems}
           activeToggleItem={viewMode}
           onToggleChange={(v: string) => onViewModeChange(v as TypeViewMode)}

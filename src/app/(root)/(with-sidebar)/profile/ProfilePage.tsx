@@ -35,7 +35,7 @@ export function ProfilePage() {
     <Layout title="Профиль">
       <div className="w-full flex justify-center">
         <div className="max-w-170 w-full">
-          <div className="card anim-hover mb-2 md:mb-4">
+          <div className="bg-card border border-border rounded-xl p-4 anim-hover mb-2 md:mb-4">
             <div className="font-bold text-center text-lg md:text-xl mb-2 md:mb-4">
               Данные пользователя
             </div>

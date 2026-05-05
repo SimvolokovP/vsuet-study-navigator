@@ -171,7 +171,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Андреевна",
     },
     group: { id: 3, name: "У-224" }, // общая лекция, но группа указана как одна из
-    subgroup: 0, // 0 = общая
+    subgroup: 3, // 0 = общая
     repeat_dates: [
       { id: 1001, date: "2026-01-26T08:00:00+03:00" },
       { id: 1002, date: "2026-02-09T08:00:00+03:00" },
@@ -199,7 +199,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Алексеевич",
     },
     group: { id: 2, name: "У-223" }, // общая лекция, но группа указана как одна из
-    subgroup: 0, // 0 = общая
+    subgroup: 3, // 0 = общая
     repeat_dates: [
       { id: 1001, date: "2026-01-26T08:00:00+03:00" },
       { id: 1002, date: "2026-02-09T08:00:00+03:00" },
@@ -227,7 +227,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Игоревна",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 2001, date: "2026-01-21T11:50:00+03:00" },
       { id: 2002, date: "2026-02-04T11:50:00+03:00" },
@@ -257,7 +257,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Николаевич",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 30001, date: "2026-01-27T11:50:00+03:00" },
       { id: 30002, date: "2026-02-10T11:50:00+03:00" },
@@ -285,7 +285,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Николаевич",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 30011, date: "2026-01-27T11:50:00+03:00" },
       { id: 30012, date: "2026-02-10T11:50:00+03:00" },
@@ -313,7 +313,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Алексеевна",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 40001, date: "2026-01-22T09:45:00+03:00" },
       { id: 40002, date: "2026-02-05T09:45:00+03:00" },
@@ -342,7 +342,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Алексеевна",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 40011, date: "2026-01-22T09:45:00+03:00" },
       { id: 40012, date: "2026-02-05T09:45:00+03:00" },
@@ -371,7 +371,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Петрович",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 50001, date: "2026-01-30T08:00:00+03:00" },
       { id: 50002, date: "2026-02-13T08:00:00+03:00" },
@@ -400,7 +400,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Петрович",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 50011, date: "2026-01-30T08:00:00+03:00" },
       { id: 50012, date: "2026-02-13T08:00:00+03:00" },
@@ -657,7 +657,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Сергеевич",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 17001, date: "2026-02-02T13:35:00+03:00" },
       { id: 17002, date: "2026-02-16T13:35:00+03:00" },
@@ -685,7 +685,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Сергеевич",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 17011, date: "2026-02-02T13:35:00+03:00" },
       { id: 17012, date: "2026-02-16T13:35:00+03:00" },
@@ -713,7 +713,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Александрович",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 18001, date: "2026-02-03T09:45:00+03:00" },
       { id: 18002, date: "2026-02-17T09:45:00+03:00" },
@@ -741,7 +741,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Александрович",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 18011, date: "2026-02-03T09:45:00+03:00" },
       { id: 18012, date: "2026-02-17T09:45:00+03:00" },
@@ -769,7 +769,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Алексеевна",
     },
     group: { id: 2, name: "У-223" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 19001, date: "2026-02-04T15:10:00+03:00" },
       { id: 19002, date: "2026-02-18T15:10:00+03:00" },
@@ -797,7 +797,7 @@ export const MOCK_SUBJECTS: ISubject[] = [
       patronymic: "Алексеевна",
     },
     group: { id: 3, name: "У-224" },
-    subgroup: 0,
+    subgroup: 3,
     repeat_dates: [
       { id: 19011, date: "2026-02-04T15:10:00+03:00" },
       { id: 19012, date: "2026-02-18T15:10:00+03:00" },
