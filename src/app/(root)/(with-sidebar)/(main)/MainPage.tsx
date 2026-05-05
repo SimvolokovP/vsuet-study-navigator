@@ -3,12 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { PAGES } from "@/config/pages-url.config";
 import { Layout } from "@/layout/Layout";
-import {
-  Award,
-  Calendar,
-  CalendarSearch,
-  DoorOpen,
-} from "lucide-react";
+import { Award, Calendar, CalendarSearch, DoorOpen } from "lucide-react";
 import Link from "next/link";
 import {
   Carousel,
@@ -19,6 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import dayjs from "dayjs";
+import { useRouter } from "next/navigation";
 
 export function MainPage() {
   const { userInLocalStorage } = useUserLocalStorage();
@@ -33,6 +29,12 @@ export function MainPage() {
   };
 
   const greeting = getGreeting();
+
+  const router = useRouter();
+
+  const handleNavigation = (href: string) => {
+    router.push(href);
+  };
 
   return (
     <Layout title="Главная">
@@ -60,37 +62,38 @@ export function MainPage() {
 
             <Carousel className="w-full">
               <CarouselContent>
-                <CarouselItem className="basis-[70%] md:basis-1/3">
-                  <Link href={PAGES.SCHEDULE}>
-                    <div className="bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
-                      <Calendar size={32} />
-                      <div className="font-semibold leading-tight">
-                        Моё расписание
-                      </div>
-                    </div>
-                  </Link>
+                <CarouselItem
+                  className="basis-[70%] md:basis-1/3"
+                  onClick={() => handleNavigation(PAGES.SCHEDULE)}
+                >
+                  <div className="bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                    <Calendar size={32} />
+                    <div className="font-semibold">Моё расписание</div>
+                  </div>
                 </CarouselItem>
 
-                <CarouselItem className="basis-[70%] md:basis-1/3">
-                  <Link href={PAGES.SEARCH}>
-                    <div className="bg-[#F5C66C]/10 text-[#F5C66C] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
-                      <CalendarSearch size={32} />
-                      <div className="font-semibold leading-tight">
-                        Поиск расписания
-                      </div>
+                <CarouselItem
+                  className="basis-[70%] md:basis-1/3"
+                  onClick={() => handleNavigation(PAGES.SEARCH)}
+                >
+                  <div className="bg-[#F5C66C]/10 text-[#F5C66C] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                    <CalendarSearch size={32} />
+                    <div className="font-semibold leading-tight">
+                      Поиск расписания
                     </div>
-                  </Link>
+                  </div>
                 </CarouselItem>
 
-                <CarouselItem className="basis-[70%] md:basis-1/3">
-                  <Link href={PAGES.RATING}>
-                    <div className="bg-[#59C0CE]/10 text-[#59C0CE] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
-                      <Award size={32} />
-                      <div className="font-semibold leading-tight">
-                        Учебный рейтинг
-                      </div>
+                <CarouselItem
+                  className="basis-[70%] md:basis-1/3"
+                  onClick={() => handleNavigation(PAGES.RATING)}
+                >
+                  <div className="bg-[#59C0CE]/10 text-[#59C0CE] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                    <Award size={32} />
+                    <div className="font-semibold leading-tight">
+                      Учебный рейтинг
                     </div>
-                  </Link>
+                  </div>
                 </CarouselItem>
 
                 <CarouselItem className="basis-[70%] md:basis-1/3 text-inner">
