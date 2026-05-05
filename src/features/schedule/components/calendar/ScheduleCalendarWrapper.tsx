@@ -126,7 +126,7 @@ export function ScheduleCalendarWrapper({
           <ModalHeader>
             <ModalTitle>Информация о занятии</ModalTitle>
           </ModalHeader>
-          <div className="mt-4 px-4 pb-2">
+          <div className="p-4">
             <SubjectInfo subjects={selectedSubject} />
           </div>
         </ModalContent>

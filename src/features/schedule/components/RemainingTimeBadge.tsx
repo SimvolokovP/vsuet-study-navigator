@@ -36,7 +36,7 @@ export function RemainingTimeBadge({
   if (!isInProgress) return null;
 
   return (
-    <div className="bg-accent mb-1 text-white text-xs px-2 py-1 rounded-md font-semibold">
+    <div className="bg-accent mb-1 text-white text-xs px-2 py-1 rounded-xl font-semibold w-fit">
       {remainingTime}
     </div>
   );

@@ -1,4 +1,7 @@
-import { getShortTeacherName, getTypeShort } from "@/shared/helpers/subjectHelpers";
+import {
+  getShortTeacherName,
+  getTypeShort,
+} from "@/shared/helpers/subjectHelpers";
 import { ISubject } from "@/shared/types/subject.model";
 import { RemainingTimeBadge } from "../RemainingTimeBadge";
 
@@ -10,10 +13,8 @@ export function SubjectInfo({ subjects }: { subjects?: ISubject[] }) {
   }
 
   return (
-    <div>
-      <div className="max-w-10">
-        <RemainingTimeBadge subjects={subjects} />
-      </div>
+    <div className="flex flex-col">
+      <RemainingTimeBadge subjects={subjects} />
       <div className="font-bold">
         {getTypeShort(baseSubject.type_of_classes)}. {baseSubject.name}
       </div>

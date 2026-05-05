@@ -30,12 +30,13 @@ export function CalendarItem({
       <div
         onClick={() => handleSubjectClick(subjects)}
         className={`${getTypeStyle(
-          baseSubject.type_of_classes
-        )} p-1 flex-1 rounded-sm text-xs md:text-sm anim-hover cursor-pointer ${
-          isInProgress ? "border-b-2 border-t-2 border-r-2 border-accent" : ""
-        }`}
+          baseSubject.type_of_classes,
+        )} p-1 flex-1 rounded-sm text-xs md:text-sm anim-hover cursor-pointer`}
       >
         <div className="font-bold truncate">
+          {isInProgress && (
+            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+          )}
           {getTypeShort(baseSubject.type_of_classes)}. {baseSubject.name}
         </div>
         <div className="truncate">
