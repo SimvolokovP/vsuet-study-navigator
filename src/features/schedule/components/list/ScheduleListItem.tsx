@@ -1,4 +1,7 @@
-import { getShortTeacherName, getTypeStyle } from "@/shared/helpers/subjectHelpers";
+import {
+  getShortTeacherName,
+  getTypeStyle,
+} from "@/shared/helpers/subjectHelpers";
 import { ISubject } from "@/shared/types/subject.model";
 import { getTypeIcon } from "@/shared/helpers/getTypeIcon";
 import { ReactNode } from "react";
@@ -9,6 +12,8 @@ import {
 } from "@/shared/helpers/renderItemHelpers";
 import { TypeSchduleType } from "@/features/types/schedule.models";
 import { RemainingTimeBadge } from "../RemainingTimeBadge";
+import Link from "next/link";
+import { PAGES } from "@/config/pages-url.config";
 
 export function ScheduleListItem({
   subjects,
@@ -24,7 +29,12 @@ export function ScheduleListItem({
       case "weekly":
         return [
           baseSubject.teacher ? (
-            <div>{getShortTeacherName(baseSubject.teacher)}</div>
+            <Link
+              className="hover:underline"
+              href={PAGES.SCHEDULE_TEACHER(baseSubject.teacher.id.toString())}
+            >
+              {getShortTeacherName(baseSubject.teacher)}
+            </Link>
           ) : null,
           baseSubject.audience?.name?.length ? (
             <div>Ауд. {baseSubject.audience!.name}</div>
@@ -51,7 +61,14 @@ export function ScheduleListItem({
       case "search":
         return [
           baseSubject.teacher ? (
-            <div key="teacher">{getShortTeacherName(baseSubject.teacher)}</div>
+            <div key="teacher">
+              <Link
+                className="hover:underline"
+                href={PAGES.SCHEDULE_TEACHER(baseSubject.teacher.id.toString())}
+              >
+                {getShortTeacherName(baseSubject.teacher)}
+              </Link>
+            </div>
           ) : null,
           <div key="groups">
             {getGroupNames(subjects)}{" "}
@@ -76,7 +93,7 @@ export function ScheduleListItem({
   return (
     <div
       className={`${getTypeStyle(
-        baseSubject.type_of_classes
+        baseSubject.type_of_classes,
       )} p-3 rounded-sm relative`}
     >
       <div className="flex items-center justify-between">

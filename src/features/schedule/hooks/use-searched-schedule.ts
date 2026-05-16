@@ -4,12 +4,12 @@ import { getWeekRange } from "@/shared/helpers/dateHelpers";
 import { hasAtLeastOneField } from "@/shared/helpers/hasAtLeastOneField";
 import { IFilter } from "@/shared/types/filter.model";
 import { useQuery } from "@tanstack/react-query";
-import { searchScuduleService } from "../services/search-schedule.service";
+import { scheduleService } from "../services/schedule.service";
 
 export function useSearchedSchedule(
   filtersList: IFilter,
   selectedDate: string,
-  searchTriggered: boolean
+  searchTriggered: boolean,
 ) {
   const { group, subgroup, teacher, audience } = filtersList;
 
@@ -24,10 +24,15 @@ export function useSearchedSchedule(
     ],
     queryFn: () => {
       const range = getWeekRange(selectedDate, 7);
-      return searchScuduleService.get(filtersList, range.start, range.end);
+      return scheduleService.getScheduleByParams(
+        filtersList,
+        range.start,
+        range.end,
+      );
     },
     staleTime: 300000,
-    enabled: !!selectedDate && hasAtLeastOneField(filtersList) && !!searchTriggered,
+    enabled:
+      !!selectedDate && hasAtLeastOneField(filtersList) && !!searchTriggered,
   });
 
   return {

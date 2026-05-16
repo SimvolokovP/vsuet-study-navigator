@@ -70,7 +70,7 @@ export function ScheduleCalendarWrapper({
             <div
               key={day.dateString}
               className={cn(
-                "sticky top-0 z-5 border-b border-muted/50 p-1 md:p-2 text-center font-medium",
+                "sticky top-0 z-5 border-b border-muted/30 p-1 md:p-2 text-center font-medium",
                 day.dateString === today ? "border-b-2" : "",
                 day.dateString === selectedDate
                   ? "border-b-2"
@@ -84,7 +84,7 @@ export function ScheduleCalendarWrapper({
 
           {TIME_SLOTS.map((timeSlot) => (
             <Fragment key={`${timeSlot.start_time}-${timeSlot.end_time}`}>
-              <div className="sticky left-0 z-0 bg-background border-r border-muted/50 p-1 md:p-2 text-xs md:text-sm text-foreground">
+              <div className="sticky left-0 z-0 bg-background border-r border-muted/30 p-1 md:p-2 text-xs md:text-sm text-foreground">
                 {getFormattedTimeSlot(timeSlot)}
               </div>
 
@@ -98,10 +98,10 @@ export function ScheduleCalendarWrapper({
                   <div
                     key={`${day.dateString}-${timeSlot.start_time}`}
                     className={cn(
-                      "flex flex-col gap-1 border-b border-muted/50 border-r p-1 min-h-15 md:min-h-20",
-                      day.dateString === today ? "bg-muted/20" : "",
+                      "flex flex-col gap-1 border-b border-muted/30 border-r p-1 min-h-15 md:min-h-20",
+                      day.dateString === today ? "bg-muted/10" : "",
                       day.dateString === selectedDate
-                        ? "border-r-2"
+                        ? ""
                         : "",
                     )}
                   >

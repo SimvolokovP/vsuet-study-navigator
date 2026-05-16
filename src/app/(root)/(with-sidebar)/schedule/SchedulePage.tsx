@@ -2,11 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/Loader";
-import { Modal, ModalContent, ModalTitle } from "@/components/ui/modal";
 import { PAGES } from "@/config/pages-url.config";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
-import { useMockWeeklySchedule } from "@/features/schedule/hooks/mock/use-mock-weekly-schedule";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
 import { TypeViewMode } from "@/features/types/schedule.models";
 import { Layout } from "@/layout/Layout";
@@ -27,13 +25,7 @@ export function SchedulePage() {
     dayjs().format("YYYY-MM-DD"),
   );
 
-  // const { weeklyScheduleData, error, isPending } = useWeeklySchedule(
-  //   userInLocalStorage?.group || "",
-  //   userInLocalStorage?.subgroup || "",
-  //   selectedDate,
-  // );
-
-  const { weeklyScheduleData, error, isPending } = useMockWeeklySchedule(
+  const { weeklyScheduleData, error, isPending } = useWeeklySchedule(
     userInLocalStorage?.group || "",
     userInLocalStorage?.subgroup || "",
     selectedDate,
@@ -67,7 +59,7 @@ export function SchedulePage() {
       <Layout
         title="Расписание"
         rightButton={
-          <Link href={PAGES.SEARCH}>
+          <Link href={PAGES.SEARCH_SCHEDULE}>
             <Button className="block md:hidden" variant={"default"} size={"sm"}>
               <Search size={20} />
             </Button>
@@ -91,7 +83,7 @@ export function SchedulePage() {
               <Link href={PAGES.AUTH}>
                 <Button variant="primary">Вход в систему</Button>
               </Link>
-              <Link href={PAGES.SEARCH}>
+              <Link href={PAGES.SEARCH_SCHEDULE}>
                 <Button>Поиск расписания</Button>
               </Link>
             </div>
@@ -105,7 +97,7 @@ export function SchedulePage() {
     <Layout
       title="Расписание"
       rightButton={
-        <Link href={PAGES.SEARCH}>
+        <Link href={PAGES.SEARCH_SCHEDULE}>
           <Button className="block md:hidden" variant={"default"} size={"sm"}>
             <Search size={20} />
           </Button>
@@ -116,8 +108,8 @@ export function SchedulePage() {
       }
       actions={
         <ScheduleActions
-          dataError={null}
-          isDataPending={false}
+          dataError={error}
+          isDataPending={isPending}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           selectedDate={selectedDate}
@@ -125,32 +117,6 @@ export function SchedulePage() {
         />
       }
     >
-      <Modal defaultOpen>
-        <ModalContent className="p-4">
-          <ModalTitle>Демо версия</ModalTitle>
-          <div className="space-y-4">
-            <p className="text-muted-foreground">
-              Это{" "}
-              <span className="font-semibold text-foreground">
-                демонстрационная версия
-              </span>{" "}
-              приложения, работающая полностью на мок-данных.
-            </p>
-
-            <div className="p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <p className="text-sm font-medium text-yellow-600 dark:text-yellow-400">
-                ⚠️ Важно:
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Бэкенд отключен. Все данные — моковые, созданные для
-                демонстрации функционала. Изменения не сохраняются, но вы можете
-                полноценно ознакомиться со всеми возможностями приложения.
-              </p>
-            </div>
-          </div>
-        </ModalContent>
-      </Modal>
-
       <ScheduleWrapper
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}

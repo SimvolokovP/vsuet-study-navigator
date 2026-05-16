@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/Loader";
 import { Divider } from "@/components/ui/divider";
 import { useFilterScheduleStore } from "@/store/use-filter-schedule.store";
-import { useMockFilterSearch } from "../../hooks/mock/use-mock-filter-search";
 
 const formSchema = z
   .object({
@@ -40,19 +39,19 @@ type FormErrors = Partial<Record<keyof FilterFormData, string>> & {
 interface FilterSearchFormProps {
   handleFilterApply: (filters: IFilter) => void;
   handleFilterReset: () => void;
+  searchTriggered: boolean;
 }
 
 export function FilterScheduleForm({
   handleFilterApply,
   handleFilterReset,
+  searchTriggered,
 }: FilterSearchFormProps) {
   const { filters, setFilters, clearFilters } = useFilterScheduleStore();
 
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // const filterSearch = useFilterSearch();
-
-  const filterSearch = useMockFilterSearch();
+  const filterSearch = useFilterSearch();
 
   useEffect(() => {
     if (!filters.group && !filters.teacher && !filters.audience) {
@@ -93,7 +92,6 @@ export function FilterScheduleForm({
     const newFilters = { ...filters, [name]: value };
     setFilters(newFilters);
 
-    // Очищаем ошибки при изменении
     if (errors.root) {
       setErrors((prev) => ({ ...prev, root: undefined }));
     }
@@ -198,7 +196,12 @@ export function FilterScheduleForm({
           {filterSearch.isLoading ? <Loader size={20} /> : "Поиск"}
         </Button>
 
-        <Button type="reset" variant="default" className="flex-1">
+        <Button
+          disabled={!searchTriggered}
+          type="reset"
+          variant="default"
+          className="flex-1"
+        >
           Сбросить фильтры
         </Button>
       </div>

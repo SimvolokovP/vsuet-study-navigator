@@ -8,6 +8,7 @@ export interface ITimeSlot {
 export interface IAudience {
   id: number;
   name: string;
+  floor?: number;
 }
 
 interface ITimeSubject {
@@ -45,4 +46,57 @@ export interface ISubject {
   group: IGroup;
   subgroup: number;
   repeat_dates: IRepeatDate[];
+}
+
+export interface IFreeSlot {
+  number: number;
+  start_time: string;
+  end_time: string;
+}
+
+export interface INearestAudience {
+  audience: IBaseAudience;
+  free_slots: IFreeSlot[];
+}
+
+export type AudiencesListResponse = IAudience[];
+
+export type FreeAudienceSearchMode = "name" | "params";
+
+export interface IFreeAudienceParams {
+  datetime: string;
+  audience?: string;
+  floor?: number | string;
+}
+
+export interface IFreeSlot {
+  number: number;
+  start_time: string;
+  end_time: string;
+}
+
+export interface IBaseAudience {
+  id: number;
+  name: string;
+  floor: number;
+}
+
+export interface IFreeAudienceItem {
+  audience: IBaseAudience;
+  free_slots: IFreeSlot[];
+}
+
+export type FreeAudienceListResponse = IFreeAudienceItem[];
+
+export interface IFreeAudienceDetailResponse {
+  audience: IBaseAudience;
+  free_slots: IFreeSlot[];
+  nearest: INearestAudience[];
+}
+
+export interface IFreeAudiencePagedResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IFreeAudienceItem[];
 }

@@ -13,10 +13,9 @@ import { SidePanel } from "@/components/ui/side-panel";
 import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-schedule";
 import { FilterScheduleForm } from "@/features/schedule/components/forms/FilterScheduleForm";
 import { Badge } from "@/components/ui/badge";
-import { useMockSearchedSchedule } from "@/features/schedule/hooks/mock/use-mock-searched-schedule";
 import { Button } from "@/components/ui/button";
 
-export function SearchPage() {
+export function ScheduleSearchPage() {
   const [isModalFilterForm, setIsModalFilterForm] = useState<boolean>(false);
   const [searchTriggered, setSearchTriggered] = useState(false);
 
@@ -33,11 +32,9 @@ export function SearchPage() {
     dayjs().format("YYYY-MM-DD"),
   );
 
-  // const { searchedScheduleData, error, isPending, refetch } =
-  //   useSearchedSchedule(filterParams, selectedDate, searchTriggered);
-
   const { searchedScheduleData, error, isPending, refetch } =
-    useMockSearchedSchedule(filterParams, selectedDate, searchTriggered);
+    useSearchedSchedule(filterParams, selectedDate, searchTriggered);
+
 
   const getFilterParamsCount = (filterParams: IFilter) => {
     let count = 0;
@@ -74,11 +71,12 @@ export function SearchPage() {
 
     setFilterParams(resetFilters);
     setSearchTriggered(false);
+    setIsModalFilterForm(false);
   };
 
   return (
     <Layout
-      title="Поиск"
+      title="Поиск расписания"
       rightButton={
         <Badge
           isHide={!searchTriggered}
@@ -103,7 +101,7 @@ export function SearchPage() {
       }
       withBackButton
       actions={
-        <div className="">
+        <div>
           {searchTriggered && (
             <ScheduleActions
               dataError={error}
@@ -138,6 +136,7 @@ export function SearchPage() {
       >
         {isModalFilterForm && (
           <FilterScheduleForm
+            searchTriggered={searchTriggered}
             handleFilterApply={handleFilterApply}
             handleFilterReset={handleFilterReset}
           />

@@ -2,7 +2,6 @@
 
 import { PAGES } from "@/config/pages-url.config";
 import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
-import { MOCK_GROUPS } from "@/shared/data/mockSubjects.data";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
@@ -12,7 +11,6 @@ import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useGroupsList } from "@/features/groups/hooks/use-groups-list";
-import { useMockGroupsList } from "@/features/groups/hooks/mock/use-mock-groups-list";
 
 const formSchema = z.object({
   group: z.string().min(1, "Выберите группу из списка"),
@@ -35,8 +33,7 @@ export function AuthForm() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // const { groupsData, isPending, error } = useGroupsList();
-  const { groupsData, isPending, error } = useMockGroupsList();
+  const { groupsData, isPending, error } = useGroupsList();
 
   const { push } = useRouter();
   const { saveUserInLocalStorage } = useUserLocalStorage();
@@ -118,7 +115,7 @@ export function AuthForm() {
         maxLength={6}
       />
 
-      <Button type="submit" variant="primary">
+      <Button disabled={isPending} type="submit" variant="primary">
         Войти
       </Button>
     </form>
