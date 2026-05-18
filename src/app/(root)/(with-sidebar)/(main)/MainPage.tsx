@@ -100,7 +100,7 @@ export function MainPage() {
                   onClick={() => handleNavigation(PAGES.SEARCH_FREE_AUDIENCE)}
                   className="basis-[70%] md:basis-1/3 text-inner"
                 >
-                  <div className="cursor-pointer bg-[#DD5764]/10 text-[#DD5764] border border-border rounded-xl p-4 flex flex-col gap-3 h-full">
+                  <div className="cursor-pointer bg-[#DD5764]/10 text-[#DD5764] rounded-xl p-4 flex flex-col gap-3 h-full">
                     <DoorOpen size={32} />
                     <div className="font-semibold">
                       Поиск свободной аудитории
