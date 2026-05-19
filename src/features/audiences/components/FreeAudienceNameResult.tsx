@@ -6,9 +6,6 @@ import { AxiosResponse } from "axios";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { useAuth } from "@/features/auth/hooks/use-auth";
-import { useRouter } from "next/navigation";
-import { PAGES } from "@/config/pages-url.config";
-
 import { AudienceStatusCard } from "./AudienceStatusCard";
 import { FreeSlotRow } from "./FreeSlotRow";
 import { NearestAudiencesModal } from "./NearestAudiencesModal";
@@ -39,7 +36,6 @@ export function FreeAudienceNameResult({
 
   const { userData } = useAuth();
   const { createReservation, isPending: isBooking } = useCreateReservation();
-  const router = useRouter();
 
   const searchTimeStr = dayjs(searchDatetime).format("HH:mm");
   const baseDate = "2000-01-01";
@@ -69,7 +65,6 @@ export function FreeAudienceNameResult({
       {
         onSuccess: () => {
           setSelectedSlot(null);
-          router.push(PAGES.PROFILE);
         },
       },
     );

@@ -13,7 +13,7 @@ import { ErrorMessage } from "@/widgets/ErrorMessage";
 import dayjs from "dayjs";
 import { Search } from "lucide-react";
 import Link from "next/link";
-import {  useState } from "react";
+import { useState } from "react";
 
 export function SchedulePage() {
   const { userInLocalStorage } = useUserLocalStorage();
@@ -80,14 +80,23 @@ export function SchedulePage() {
         </Link>
       }
       actions={
-        <ScheduleActions
-          dataError={error}
-          isDataPending={isPending}
-          viewMode={viewMode}
-          onViewModeChange={setViewMode}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-        />
+        <div className="flex w-full justify-end gap-2 items-start">
+          <GroupAuthModal
+            trigger={
+              <Button size={"sm"} className="md:h-9">
+                {userInLocalStorage.group} ({userInLocalStorage.subgroup})
+              </Button>
+            }
+          />
+          <ScheduleActions
+            dataError={error}
+            isDataPending={isPending}
+            viewMode={viewMode}
+            onViewModeChange={setViewMode}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        </div>
       }
     >
       <ScheduleWrapper

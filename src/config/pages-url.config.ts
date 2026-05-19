@@ -13,4 +13,5 @@ export const PAGES = {
   SCHEDULE_TEACHER: (id: string) => `/schedule/teacher/${id}`,
   DIRECTORY: "/directory",
   DIRECTORY_CERTIFICATE: `/directory/certificate`,
+  RESERVATIONS: "/profile/reservations",
 };

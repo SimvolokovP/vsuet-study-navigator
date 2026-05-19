@@ -57,16 +57,20 @@ export function ProfileAuthBlock({ isLoading }: AccountAuthBlockProps) {
             </div>
           )}
 
-          <div className="flex justify-center mt-2">
+          <div className="flex gap-2 justify-center mt-2">
             <LogoutConfirm>
               <Button variant="primary">Выйти из аккаунта</Button>
             </LogoutConfirm>
+            <Link href={PAGES.RESERVATIONS}>
+              <Button>Заброннированные аудитории</Button>
+            </Link>
           </div>
         </div>
       ) : (
         <div className="flex flex-col items-center gap-3 py-2">
           <p className="text-sm md:text-base text-muted-foreground text-center">
-            Вы не авторизованы в системе. Войдите в аккаунт для получения полного доступа.
+            Вы не авторизованы в системе. Войдите в аккаунт для получения
+            полного доступа.
           </p>
           <Link href={`${PAGES.AUTH}?type=credentials`}>
             <Button variant="primary">Войти по аккаунту</Button>

@@ -19,15 +19,15 @@ type GroupFormData = z.infer<typeof groupFormSchema>;
 type GroupFormErrors = Partial<Record<keyof GroupFormData, string>>;
 
 export function GroupAuthForm({ onSuccess }: { onSuccess?: () => void }) {
+  const { saveGroupAndSubgroup, userInLocalStorage } = useUserLocalStorage();
+
   const [formData, setFormData] = useState<GroupFormData>({
-    group: "",
-    subgroup: "1",
+    group: userInLocalStorage?.group || "",
+    subgroup: (userInLocalStorage?.subgroup as "1") || "2" || "1",
   });
   const [errors, setErrors] = useState<GroupFormErrors>({});
 
   const { groupsData, isPending, error } = useGroupsList();
-
-  const { saveGroupAndSubgroup } = useUserLocalStorage();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

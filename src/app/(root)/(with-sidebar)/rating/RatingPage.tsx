@@ -78,7 +78,20 @@ export default function RatingPage() {
   }
 
   return (
-    <Layout title="Рейтинг">
+    <Layout
+      title="Рейтинг"
+      actions={
+        <div className="flex w-full justify-end gap-2 items-center">
+          <NumberAuthModal
+            trigger={
+              <Button size={"sm"} className="md:h-9">
+                {userInLocalStorage.number}
+              </Button>
+            }
+          />
+        </div>
+      }
+    >
       <div className="w-full flex flex-col justify-center items-center">
         <div className="max-w-180 w-full">
           <div className="w-full flex flex-col gap-2 justify-center">

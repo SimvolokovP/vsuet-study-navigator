@@ -18,12 +18,12 @@ type NumberFormData = z.infer<typeof numberFormSchema>;
 type NumberFormErrors = Partial<Record<keyof NumberFormData, string>>;
 
 export function NumberAuthForm({ onSuccess }: { onSuccess?: () => void }) {
+  const { saveNumber, userInLocalStorage } = useUserLocalStorage();
+
   const [formData, setFormData] = useState<NumberFormData>({
-    number: "",
+    number: userInLocalStorage?.number || "",
   });
   const [errors, setErrors] = useState<NumberFormErrors>({});
-
-  const { saveNumber } = useUserLocalStorage();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -75,7 +75,7 @@ export function NumberAuthForm({ onSuccess }: { onSuccess?: () => void }) {
       />
 
       <Button type="submit" variant="primary">
-        Войти
+        Сохранить
       </Button>
     </form>
   );
