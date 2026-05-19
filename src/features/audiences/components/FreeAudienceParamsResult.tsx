@@ -1,13 +1,32 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { IFreeAudiencePagedResponse } from "@/shared/types/subject.model";
 import { AxiosResponse } from "axios";
-import { useEffect } from "react";
+import { useAuth } from "@/features/auth/hooks/use-auth";
+import { FreeAudienceParamCard } from "./FreeAudienceParamCard";
+import dayjs from "dayjs";
+import { useCreateReservation } from "../hooks/use-create-reservation";
+import { ConfirmBookingModal } from "./ConfirmBookingModal";
+
+interface ISlotData {
+  number: number;
+  start_time: string;
+  end_time: string;
+}
+
+interface ISelectedBooking {
+  audience: { id: number; name: string };
+  slot: ISlotData;
+}
 
 interface FreeAudienceParamsResultProps {
   searchFloor: string;
   dataByParams: AxiosResponse<IFreeAudiencePagedResponse>;
   page: number;
   setPage: (page: number | ((prev: number) => number)) => void;
+  searchDatetime: string;
 }
 
 export function FreeAudienceParamsResult({
@@ -15,8 +34,16 @@ export function FreeAudienceParamsResult({
   searchFloor,
   page,
   setPage,
+  searchDatetime,
 }: FreeAudienceParamsResultProps) {
   const { results, next, previous, count } = dataByParams.data;
+
+  const { userData } = useAuth();
+  const { createReservation, isPending: isBooking } = useCreateReservation();
+
+  const [bookingTarget, setBookingTarget] = useState<ISelectedBooking | null>(
+    null,
+  );
 
   const ITEMS_PER_PAGE = 10;
   const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
@@ -27,6 +54,31 @@ export function FreeAudienceParamsResult({
       behavior: "smooth",
     });
   }, [page]);
+
+  const handleOpenBookingModal = (
+    audience: { id: number; name: string },
+    slot: ISlotData,
+  ) => {
+    setBookingTarget({ audience, slot });
+  };
+
+  const handleConfirmBooking = () => {
+    if (!bookingTarget) return;
+
+    createReservation(
+      {
+        audience: bookingTarget.audience.id,
+        date: dayjs(searchDatetime).format("YYYY-MM-DD"),
+        slot_start: bookingTarget.slot.number,
+        slot_end: bookingTarget.slot.number,
+      },
+      {
+        onSuccess: () => {
+          setBookingTarget(null);
+        },
+      },
+    );
+  };
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -41,33 +93,13 @@ export function FreeAudienceParamsResult({
           </div>
         ) : (
           results.map((item) => (
-            <div
+            <FreeAudienceParamCard
               key={item.audience.id}
-              className="w-full bg-card border border-border rounded-xl p-4 anim-hover flex flex-col gap-3"
-            >
-              <div className="flex items-center gap-3 border-b border-border pb-2">
-                <div className="bg-success w-2.5 h-2.5 rounded-full" />
-                <h4 className="font-bold text-base md:text-lg">
-                  Аудитория {item.audience.name.trim() || "—"}
-                </h4>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {item.free_slots.map((slot) => {
-                  const startTimeClean = slot.start_time.slice(0, 5);
-                  const endTimeClean = slot.end_time.slice(0, 5);
-
-                  return (
-                    <span
-                      key={slot.number}
-                      className="px-2.5 py-1 bg-success/10 text-success text-xs font-medium rounded-lg border border-success/20"
-                    >
-                      Пара {slot.number}: {startTimeClean} - {endTimeClean}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+              audience={item.audience}
+              freeSlots={item.free_slots}
+              isUserAuthorized={!!userData}
+              onSlotClick={handleOpenBookingModal}
+            />
           ))
         )}
       </div>
@@ -90,6 +122,16 @@ export function FreeAudienceParamsResult({
           </Button>
         </div>
       )}
+
+      <ConfirmBookingModal
+        isOpen={!!bookingTarget}
+        onClose={() => setBookingTarget(null)}
+        isBooking={isBooking}
+        audienceName={bookingTarget?.audience.name || ""}
+        selectedSlot={bookingTarget?.slot || null}
+        searchDatetime={searchDatetime}
+        onConfirm={handleConfirmBooking}
+      />
     </div>
   );
 }

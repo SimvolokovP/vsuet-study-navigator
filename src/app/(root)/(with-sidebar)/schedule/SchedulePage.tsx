@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/Loader";
 import { PAGES } from "@/config/pages-url.config";
+import { GroupAuthModal } from "@/features/auth/components/GroupAuthModal";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
@@ -13,13 +13,11 @@ import { ErrorMessage } from "@/widgets/ErrorMessage";
 import dayjs from "dayjs";
 import { Search } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 export function SchedulePage() {
-  const { userInLocalStorage, loadUserFromLocalStorage } =
-    useUserLocalStorage();
+  const { userInLocalStorage } = useUserLocalStorage();
   const [viewMode, setViewMode] = useState<TypeViewMode>("list");
-  const [isLoading, setIsLoading] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState<string>(
     dayjs().format("YYYY-MM-DD"),
@@ -31,30 +29,7 @@ export function SchedulePage() {
     selectedDate,
   );
 
-  useEffect(() => {
-    const loadData = async () => {
-      setIsLoading(true);
-      try {
-        await loadUserFromLocalStorage();
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadData();
-  }, [loadUserFromLocalStorage]);
-
-  if (isLoading) {
-    return (
-      <Layout title="Расписание">
-        <div className="h-50 flex items-center justify-center">
-          <Loader size={32} />
-        </div>
-      </Layout>
-    );
-  }
-
-  if (!userInLocalStorage) {
+  if (!userInLocalStorage?.group) {
     return (
       <Layout
         title="Расписание"
@@ -72,19 +47,17 @@ export function SchedulePage() {
         <div className="w-full flex justify-center">
           <div className="max-w-170">
             <ErrorMessage
-              text="Вы не вошли в систему, поэтому мы не смогли найти данные о расписании."
+              text="В системе нет сохраненной информации о группе"
               error={{
-                message: "Нет данных пользователя",
-                name: "Нет данных пользователя",
+                message: "Нет данных об учебной группе",
+                name: "Нет данных об учебной группе",
               }}
             />
 
             <div className="flex justify-center items-center gap-4 mt-2 md:mt-4">
-              <Link href={PAGES.AUTH}>
-                <Button variant="primary">Вход в систему</Button>
-              </Link>
+              <GroupAuthModal />
               <Link href={PAGES.SEARCH_SCHEDULE}>
-                <Button>Поиск расписания</Button>
+                <Button>Поиск расписания по фильтрам</Button>
               </Link>
             </div>
           </div>

@@ -5,7 +5,7 @@ type GroupsListResponse = IGroup[];
 
 export const groupsService = {
   async getAll() {
-    const response = await API_HOST.get<GroupsListResponse>(`timetable/group/`);
+    const response = await API_HOST.get<GroupsListResponse>(`api/timetable/group/`);
     return response;
   },
 };

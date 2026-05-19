@@ -100,3 +100,24 @@ export interface IFreeAudiencePagedResponse {
   previous: string | null;
   results: IFreeAudienceItem[];
 }
+
+export interface ReservationItem {
+  id: number;
+  audience: IBaseAudience;
+  start_reservation: string;
+  end_reservation: string;
+}
+
+export interface ReservationsListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: ReservationItem[];
+}
+
+export interface CreateReservationRequest {
+  audience: number;
+  date: string;
+  slot_start: number;
+  slot_end: number;
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { Button } from "@/components/ui/button";
 import {
   Modal,
@@ -15,11 +14,9 @@ import { useLogout } from "@/features/auth/hooks/use-logout";
 import { Loader2 } from "lucide-react";
 
 export function LogoutConfirm({ children }: PropsWithChildren) {
-  const { clearUserLocalStorage } = useUserLocalStorage();
   const { logout, isPending } = useLogout();
 
   const handleLogout = () => {
-    clearUserLocalStorage();
     logout();
   };
 
@@ -41,7 +38,7 @@ export function LogoutConfirm({ children }: PropsWithChildren) {
             {isPending ? <Loader2 /> : "Выйти"}
           </Button>
           <ModalClose asChild>
-            <Button disabled={isPending} variant="default" type="button">
+            <Button variant="default" type="button">
               Отмена
             </Button>
           </ModalClose>

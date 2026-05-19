@@ -21,7 +21,7 @@ export const scheduleService = {
     date_max: string,
   ) {
     const response = await API_HOST.get<weeklyScheduleServiceResponse>(
-      `timetable/?date_min=${date_min}&date_max=${date_max}&group__name=${userGroup}&subgroup=${userSubgroup}`,
+      `api/timetable/?date_min=${date_min}&date_max=${date_max}&group__name=${userGroup}&subgroup=${userSubgroup}`,
     );
     return response.data;
   },
@@ -33,7 +33,7 @@ export const scheduleService = {
   ) {
     const { audience, group, subgroup, teacher } = filtersList;
 
-    let url = `timetable/?date_min=${date_min}&date_max=${date_max}`;
+    let url = `api/timetable/?date_min=${date_min}&date_max=${date_max}`;
 
     if (group) url += `&group__name=${group}`;
     if (group && subgroup) url += `&subgroup=${subgroup}`;
@@ -46,7 +46,7 @@ export const scheduleService = {
 
   async getScheduleByTeacherId(id: number, date_min: string, date_max: string) {
     const response = await API_HOST.get<ITeachersScheduleServiceResponse>(
-      `users/teachers/${id}/?date_min=${date_min}&date_max=${date_max}`,
+      `api/users/teachers/${id}/?date_min=${date_min}&date_max=${date_max}`,
     );
     return response;
   },

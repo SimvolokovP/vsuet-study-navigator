@@ -159,6 +159,7 @@ export function FreeAudienceSearchPage() {
                 searchFloor={searchFloor}
                 page={page}
                 setPage={setPage}
+                searchDatetime={searchDatetime}
               />
             )}
           </div>

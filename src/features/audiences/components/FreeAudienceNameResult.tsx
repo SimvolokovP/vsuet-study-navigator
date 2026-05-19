@@ -1,16 +1,27 @@
+"use client";
+
 import { useState } from "react";
 import { IFreeAudienceDetailResponse } from "@/shared/types/subject.model";
 import { AxiosResponse } from "axios";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import { Button } from "@/components/ui/button";
-import {
-  Modal,
-  ModalContent,
-  ModalTitle,
-} from "@/components/ui/modal";
+import { useAuth } from "@/features/auth/hooks/use-auth";
+import { useRouter } from "next/navigation";
+import { PAGES } from "@/config/pages-url.config";
+
+import { AudienceStatusCard } from "./AudienceStatusCard";
+import { FreeSlotRow } from "./FreeSlotRow";
+import { NearestAudiencesModal } from "./NearestAudiencesModal";
+import { ConfirmBookingModal } from "./ConfirmBookingModal";
+import { useCreateReservation } from "../hooks/use-create-reservation";
 
 dayjs.extend(isBetween);
+
+interface IFreeSlotDetail {
+  number: number;
+  start_time: string;
+  end_time: string;
+}
 
 interface FreeAudienceNameResultProps {
   dataByName: AxiosResponse<IFreeAudienceDetailResponse>;
@@ -22,70 +33,69 @@ export function FreeAudienceNameResult({
   searchDatetime,
 }: FreeAudienceNameResultProps) {
   const [isNearestOpen, setIsNearestOpen] = useState(false);
-  const searchTimeStr = dayjs(searchDatetime).format("HH:mm");
+  const [selectedSlot, setSelectedSlot] = useState<IFreeSlotDetail | null>(
+    null,
+  );
 
+  const { userData } = useAuth();
+  const { createReservation, isPending: isBooking } = useCreateReservation();
+  const router = useRouter();
+
+  const searchTimeStr = dayjs(searchDatetime).format("HH:mm");
   const baseDate = "2000-01-01";
   const targetTime = dayjs(`${baseDate} ${searchTimeStr}`);
 
-  const isTargetSlotFree = dataByName.data.free_slots.some((slot) => {
+  const audience = dataByName.data.audience;
+  const freeSlots = dataByName.data.free_slots;
+
+  const isTargetSlotFree = freeSlots.some((slot) => {
     const startClean = slot.start_time.slice(0, 5);
     const endClean = slot.end_time.slice(0, 5);
-
     const start = dayjs(`${baseDate} ${startClean}`);
     const end = dayjs(`${baseDate} ${endClean}`);
     return targetTime.isBetween(start, end, null, "[]");
   });
 
+  const handleConfirmBooking = () => {
+    if (!selectedSlot) return;
+
+    createReservation(
+      {
+        audience: audience.id,
+        date: dayjs(searchDatetime).format("YYYY-MM-DD"),
+        slot_start: selectedSlot.number,
+        slot_end: selectedSlot.number,
+      },
+      {
+        onSuccess: () => {
+          setSelectedSlot(null);
+          router.push(PAGES.PROFILE);
+        },
+      },
+    );
+  };
+
   return (
     <div className="w-full">
-      <div className="bg-card border border-border rounded-xl p-4 anim-hover mb-4 md:mb-6">
-        <div className="flex flex-col gap-2 items-center justify-center text-center">
-          <h3 className="font-bold text-lg md:text-xl">
-            Аудитория: {dataByName.data.audience.name}
-          </h3>
-          {dataByName.data.audience.floor ? (
-            <div className="text-sm">Этаж {dataByName.data.audience.floor}</div>
-          ) : (
-            <></>
-          )}
-
-          <div className="mt-2 w-full border-t border-border pt-3">
-            {isTargetSlotFree ? (
-              <div className="flex items-center justify-center gap-2 text-success font-semibold text-sm md:text-base">
-                <div className="bg-success w-2.5 h-2.5 rounded-full animate-pulse" />
-                Аудитория свободна на выбранное время ({searchTimeStr})
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-3">
-                <div className="flex items-center justify-center gap-2 text-destructive font-semibold text-sm md:text-base">
-                  <div className="bg-destructive w-2.5 h-2.5 rounded-full" />
-                  На выбранное время ({searchTimeStr}) аудитория занята
-                </div>
-                <Button
-                  type="button"
-                  variant="default"
-                  size="sm"
-                  onClick={() => setIsNearestOpen(true)}
-                >
-                  Показать ближайшие свободные аудитории
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <AudienceStatusCard
+        audienceName={audience.name}
+        floor={audience.floor}
+        isTargetSlotFree={isTargetSlotFree}
+        searchTimeStr={searchTimeStr}
+        onOpenNearest={() => setIsNearestOpen(true)}
+      />
 
       <p className="text-sm md:text-lg mb-2 md:mb-4 font-bold text-center">
         Все доступные свободные слоты на этот день:
       </p>
 
       <div className="flex flex-col gap-2 md:gap-3">
-        {dataByName.data.free_slots.length === 0 ? (
+        {freeSlots.length === 0 ? (
           <div className="text-center text-sm text-muted-foreground py-4 bg-muted/10 rounded-xl border border-dashed">
             Нет свободных слотов на весь день
           </div>
         ) : (
-          dataByName.data.free_slots.map((slot) => {
+          freeSlots.map((slot) => {
             const startTimeFormatted = slot.start_time.slice(0, 5);
             const endTimeFormatted = slot.end_time.slice(0, 5);
 
@@ -97,66 +107,36 @@ export function FreeAudienceNameResult({
             );
 
             return (
-              <div
+              <FreeSlotRow
                 key={slot.number}
-                className={`w-full bg-card border rounded-xl p-4 flex items-center justify-between transition-all ${
-                  isThisSlotCurrent
-                    ? "border-success shadow-sm shadow-emerald-500/10 bg-success/5"
-                    : "border-border"
-                }`}
-              >
-                <div
-                  className={`w-3 h-3 rounded-full ${isThisSlotCurrent ? "bg-success" : "bg-muted-foreground/40"}`}
-                />
-                <div
-                  className={`text-sm md:text-base font-medium ${isThisSlotCurrent ? "text-success" : "text-foreground"}`}
-                >
-                  Пара {slot.number}: {startTimeFormatted} - {endTimeFormatted}
-                </div>
-                <div className="w-3"></div>
-              </div>
+                number={slot.number}
+                startTimeFormatted={startTimeFormatted}
+                endTimeFormatted={endTimeFormatted}
+                isThisSlotCurrent={isThisSlotCurrent}
+                showBookingButton={!!userData}
+                onBookClick={() => setSelectedSlot(slot)}
+              />
             );
           })
         )}
       </div>
 
-      <Modal open={isNearestOpen} onOpenChange={setIsNearestOpen}>
-        <ModalContent className="p-3 md:p-6">
-          <ModalTitle className="font-bold text-lg">
-            Ближайшие свободные аудитории
-          </ModalTitle>
+      <NearestAudiencesModal
+        isOpen={isNearestOpen}
+        onOpenChange={setIsNearestOpen}
+        nearest={dataByName.data.nearest}
+      />
 
-          <div className="max-h-[60vh] overflow-y-auto pr-1 flex flex-col gap-3">
-            {!dataByName.data.nearest ||
-            dataByName.data.nearest.length === 0 ? (
-              <p className="text-sm text-muted-foreground text-center py-4">
-                Альтернативных вариантов не найдено
-              </p>
-            ) : (
-              dataByName.data.nearest.map((item) => (
-                <div
-                  key={item.audience.id}
-                  className="p-2 md:p-4 border border-border rounded-xl bg-card"
-                >
-                  <h4 className="font-semibold text-sm md:text-base mb-2">
-                    Аудитория {item.audience.name} (Этаж {item.audience.floor})
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.free_slots.map((slot) => (
-                      <span
-                        key={slot.number}
-                        className="px-2 py-0.5 bg-success/10 text-success text-xs font-medium rounded"
-                      >
-                        Пара {slot.number}: {slot.start_time.slice(0, 5)}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </ModalContent>
-      </Modal>
+      <ConfirmBookingModal
+        isOpen={!!selectedSlot}
+        onClose={() => setSelectedSlot(null)}
+        isBooking={isBooking}
+        audienceName={audience.name}
+        floor={audience.floor}
+        selectedSlot={selectedSlot}
+        searchDatetime={searchDatetime}
+        onConfirm={handleConfirmBooking}
+      />
     </div>
   );
 }

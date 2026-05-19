@@ -6,7 +6,7 @@ type TeachersListResponse = ITeacher[];
 export const teachersService = {
   async getAll() {
     const response = await API_HOST.get<TeachersListResponse>(
-      `users/teachers/`
+      `api/users/teachers/`
     );
     return response;
   },

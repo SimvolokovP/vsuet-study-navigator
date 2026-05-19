@@ -12,13 +12,13 @@ import {
 import { cn } from "@/shared/utils/cn";
 import { Logo } from "@/widgets/Logo";
 import { LogIn, LogOut } from "lucide-react";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { LogoutConfirm } from "@/widgets/LogoutConfirm";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 
 export function Sidebar() {
   const pathname = usePathname();
 
-  const { userInLocalStorage } = useUserLocalStorage();
+  const { userData } = useAuth();
 
   return (
     <aside className="fixed z-30 hidden md:flex border-r-2 border-border h-full flex-col bg-card w-(--sider-width) shrink py-9">
@@ -63,14 +63,14 @@ export function Sidebar() {
 
         <div className="flex flex-col gap-6 w-full items-center">
           <div className="w-full flex justify-center">
-            {userInLocalStorage ? (
+            {userData ? (
               <LogoutConfirm>
                 <button className="relative cursor-pointer flex justify-center w-full h-9 items-center transition-all text-muted-foreground hover:text-destructive group">
                   <LogOut size={24} />
                 </button>
               </LogoutConfirm>
             ) : (
-              <Link className="w-full" href={PAGES.AUTH}>
+              <Link href={`${PAGES.AUTH}?type=credentials`}>
                 <button className="relative cursor-pointer flex justify-center w-full h-9 items-center transition-all text-muted-foreground group">
                   <LogIn size={24} />
                 </button>

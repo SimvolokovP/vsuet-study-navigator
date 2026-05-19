@@ -8,7 +8,7 @@ import {
 export const audiencesService = {
   async getAll() {
     const response =
-      await API_HOST.get<AudiencesListResponse>(`timetable/audience/`);
+      await API_HOST.get<AudiencesListResponse>(`api/timetable/audience/`);
     return response;
   },
 
@@ -18,7 +18,7 @@ export const audiencesService = {
     page?: number;
   }) {
     const response = await API_HOST.get<IFreeAudiencePagedResponse>(
-      `timetable/free-audience/`,
+      `api/timetable/free-audience/`,
       { params },
     );
     return response;
@@ -26,7 +26,7 @@ export const audiencesService = {
 
   async getFreeByName(name: string, params: { datetime: string }) {
     const response = await API_HOST.get<IFreeAudienceDetailResponse>(
-      `timetable/free-audience/${name}/`,
+      `api/timetable/free-audience/${name}/`,
       { params },
     );
 
