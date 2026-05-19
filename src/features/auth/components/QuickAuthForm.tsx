@@ -25,7 +25,7 @@ const formSchema = z.object({
 type AuthFormData = z.infer<typeof formSchema>;
 type FormErrors = Partial<Record<keyof AuthFormData, string>>;
 
-export function AuthForm() {
+export function QuickAuthForm() {
   const [formData, setFormData] = useState<AuthFormData>({
     group: "",
     subgroup: "1",

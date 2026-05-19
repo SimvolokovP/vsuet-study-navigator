@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { PAGES } from "@/config/pages-url.config";
 import { Layout } from "@/layout/Layout";
 import { Award, Calendar, CalendarSearch, DoorOpen } from "lucide-react";
-import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -12,13 +10,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 
 export function MainPage() {
-  const { userInLocalStorage } = useUserLocalStorage();
-
   const getGreeting = () => {
     const hour = dayjs().hour();
 
@@ -45,17 +40,8 @@ export function MainPage() {
               {greeting} &#128075;
             </div>
             <p className="text-sm md:text-base">
-              {userInLocalStorage
-                ? "Пусть эта неделя будет для тебя лёгкой и удачной!"
-                : "Войдите в систему, чтобы мы сохранили данные о вас."}
+              Пусть эта неделя будет для тебя лёгкой и удачной!
             </p>
-            {!userInLocalStorage && (
-              <div className="flex w-full justify-center">
-                <Link className="mt-2" href={PAGES.AUTH}>
-                  <Button variant="primary">Войти</Button>
-                </Link>
-              </div>
-            )}
           </div>
           <div className="flex flex-col gap-4">
             <div className="font-bold">Учебное пространство</div>
