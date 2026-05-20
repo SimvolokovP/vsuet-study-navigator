@@ -36,13 +36,13 @@ const AccordionTrigger = React.forwardRef<
       )}
       {...props}
     >
-      <div className="text-lg font-medium">{children}</div>
+      <div className="text-base md:text-lg font-medium">{children}</div>
       <div className="flex items-center gap-3">
         {rightContent}
         <div
           className={cn(
             "p-0.5 rounded-full transition-colors duration-200",
-            "group-data-[state=open]:bg-accent group-data-[state=closed]:bg-border",
+            "group-data-[state=open]:bg-accent/85 group-data-[state=closed]:bg-border",
           )}
         >
           <ChevronDown

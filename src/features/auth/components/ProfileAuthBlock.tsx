@@ -57,7 +57,7 @@ export function ProfileAuthBlock({ isLoading }: AccountAuthBlockProps) {
             </div>
           )}
 
-          <div className="flex gap-2 justify-center mt-2">
+          <div className="flex gap-2 justify-center mt-2 flex-wrap">
             <LogoutConfirm>
               <Button variant="primary">Выйти из аккаунта</Button>
             </LogoutConfirm>

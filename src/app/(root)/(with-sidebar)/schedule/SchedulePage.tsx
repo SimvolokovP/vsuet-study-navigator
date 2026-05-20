@@ -83,7 +83,11 @@ export function SchedulePage() {
         <div className="flex w-full justify-end gap-2 items-start">
           <GroupAuthModal
             trigger={
-              <Button size={"sm"} className="md:h-9">
+              <Button
+                disabled={isPending || !!error}
+                size={"sm"}
+                className="md:h-9"
+              >
                 {userInLocalStorage.group} ({userInLocalStorage.subgroup})
               </Button>
             }

@@ -52,7 +52,7 @@ export function MainPage() {
                   className="basis-[70%] md:basis-1/3"
                   onClick={() => handleNavigation(PAGES.SCHEDULE)}
                 >
-                  <div className="cursor-pointer bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                  <div className="cursor-pointer bg-[#3f8efc]/10 text-[#3f8efc] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
                     <Calendar size={32} />
                     <div className="font-semibold">Моё расписание</div>
                   </div>
