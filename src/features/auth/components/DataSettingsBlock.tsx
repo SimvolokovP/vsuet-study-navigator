@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/Loader";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AutoComplete } from "@/components/ui/auto-complete";
@@ -13,6 +12,13 @@ import {
 } from "@/store/use-user-local-storage.store";
 import { FormEvent, useState, useCallback } from "react";
 import { z } from "zod";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const scheduleFormSchema = z.object({
   group: z.string().optional(),
@@ -121,117 +127,113 @@ export function DataSettingsBlock({
     (userInLocalStorage.group || userInLocalStorage.number);
 
   if (isLoading) {
-    return (
-      <div className="bg-card border border-border rounded-xl p-4 anim-hover">
-        <div className="font-bold text-center text-lg md:text-xl mb-2 md:mb-4">
-          Данные в системе
-        </div>
-        <div className="flex items-center justify-center py-4">
-          <Loader size={32} />
-        </div>
-      </div>
-    );
+    return <Skeleton className="h-11 w-full" />;
   }
 
   return (
-    <div className="bg-card border border-border rounded-xl p-4 anim-hover">
-      <div className="font-bold text-center text-lg md:text-xl mb-2 md:mb-4">
-        Данные в системе
-      </div>
+    <Accordion type="multiple" className="w-full flex flex-col gap-3">
+      <AccordionItem value="1">
+        <AccordionTrigger>Данные в системе</AccordionTrigger>
+        <AccordionContent className="bg-card border-x border-b border-border p-4 rounded-b-xl flex flex-col gap-3">
+          {isEditing || !hasAnyData ? (
+            <form onSubmit={handleSave} className="flex flex-col gap-3 w-full">
+              <AutoComplete
+                label="Группа"
+                name="group"
+                placeholder="Номер группы"
+                options={getGroupsOptions(groupsData)}
+                value={formData.group || ""}
+                onChange={(val) => handleFieldChange("group", val)}
+                error={groupsError}
+                isLoading={isGroupsPending}
+              />
 
-      {isEditing || !hasAnyData ? (
-        <form onSubmit={handleSave} className="flex flex-col gap-3 w-full">
-          <AutoComplete
-            label="Группа"
-            name="group"
-            placeholder="Номер группы"
-            options={getGroupsOptions(groupsData)}
-            value={formData.group || ""}
-            onChange={(val) => handleFieldChange("group", val)}
-            error={groupsError}
-            isLoading={isGroupsPending}
-          />
+              <Select
+                name="subgroup"
+                options={[
+                  { label: "1", value: "1" },
+                  { label: "2", value: "2" },
+                ]}
+                label="Подгруппа"
+                value={formData.subgroup || "1"}
+                onChange={(e) => handleFieldChange("subgroup", e.target.value)}
+                required={false}
+              />
 
-          <Select
-            name="subgroup"
-            options={[
-              { label: "1", value: "1" },
-              { label: "2", value: "2" },
-            ]}
-            label="Подгруппа"
-            value={formData.subgroup || "1"}
-            onChange={(e) => handleFieldChange("subgroup", e.target.value)}
-            required={false}
-          />
+              <div>
+                <Input
+                  label="Номер зачетки"
+                  name="number"
+                  placeholder="6 цифр"
+                  value={formData.number || ""}
+                  onChange={(e) =>
+                    handleFieldChange(
+                      "number",
+                      e.target.value.replace(/\D/g, "").slice(0, 6),
+                    )
+                  }
+                  maxLength={6}
+                  required={false}
+                />
+                {errors.number && (
+                  <p className="text-sm text-red-500 mt-1">{errors.number}</p>
+                )}
+              </div>
 
-          <div>
-            <Input
-              label="Номер зачетки"
-              name="number"
-              placeholder="6 цифр"
-              value={formData.number || ""}
-              onChange={(e) =>
-                handleFieldChange(
-                  "number",
-                  e.target.value.replace(/\D/g, "").slice(0, 6),
-                )
-              }
-              maxLength={6}
-              required={false}
-            />
-            {errors.number && (
-              <p className="text-sm text-red-500 mt-1">{errors.number}</p>
-            )}
-          </div>
+              <div className="flex gap-2 justify-end mt-2">
+                {hasAnyData && (
+                  <Button
+                    type="button"
+                    variant="default"
+                    onClick={handleCancel}
+                  >
+                    Отмена
+                  </Button>
+                )}
+                <Button type="submit" variant="primary">
+                  Сохранить настройки
+                </Button>
+              </div>
+            </form>
+          ) : (
+            <div className="flex flex-col gap-2 text-base md:text-lg">
+              <div>
+                Группа:{" "}
+                <span className="font-bold">{userInLocalStorage?.group}</span>
+                {userInLocalStorage.subgroup && (
+                  <span className="font-bold ml-2">
+                    (подгр. {userInLocalStorage?.subgroup})
+                  </span>
+                )}
+              </div>
+              <div>
+                Номер зачетки:{" "}
+                <span className="font-bold">{userInLocalStorage?.number}</span>
+              </div>
 
-          <div className="flex gap-2 justify-end mt-2">
-            {hasAnyData && (
-              <Button type="button" variant="default" onClick={handleCancel}>
-                Отмена
-              </Button>
-            )}
-            <Button type="submit" variant="primary">
-              Сохранить настройки
-            </Button>
-          </div>
-        </form>
-      ) : (
-        <div className="flex flex-col gap-2 text-base md:text-lg">
-          <div>
-            Группа:{" "}
-            <span className="font-bold">{userInLocalStorage?.group}</span>
-            {userInLocalStorage.subgroup && (
-              <span className="font-bold ml-2">
-                (подгр. {userInLocalStorage?.subgroup})
-              </span>
-            )}
-          </div>
-          <div>
-            Номер зачетки:{" "}
-            <span className="font-bold">{userInLocalStorage?.number}</span>
-          </div>
+              {!userInLocalStorage.group && !userInLocalStorage.number && (
+                <div className="text-center text-muted-foreground">
+                  Нет сохраненных данных
+                </div>
+              )}
 
-          {!userInLocalStorage.group && !userInLocalStorage.number && (
-            <div className="text-center text-muted-foreground">
-              Нет сохраненных данных
+              <div className="flex justify-center gap-2 mt-3">
+                <Button variant="default" onClick={() => setIsEditing(true)}>
+                  {hasAnyData ? "Редактировать данные" : "Добавить данные"}
+                </Button>
+                {hasAnyData && (
+                  <Button
+                    variant="destructive"
+                    onClick={() => clearUserLocalStorage()}
+                  >
+                    Удалить данные
+                  </Button>
+                )}
+              </div>
             </div>
           )}
-
-          <div className="flex justify-center gap-2 mt-3">
-            <Button variant="default" onClick={() => setIsEditing(true)}>
-              {hasAnyData ? "Редактировать данные" : "Добавить данные"}
-            </Button>
-            {hasAnyData && (
-              <Button
-                variant="destructive"
-                onClick={() => clearUserLocalStorage()}
-              >
-                Удалить данные
-              </Button>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

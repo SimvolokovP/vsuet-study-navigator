@@ -81,7 +81,7 @@ export function MainPage() {
                   className="basis-[70%] md:basis-1/3"
                   onClick={() => handleNavigation(PAGES.RATING)}
                 >
-                  <div className="cursor-pointer bg-[#59C0CE]/10 text-[#59C0CE] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                  <div className="cursor-pointer bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
                     <Award size={32} />
                     <div className="font-semibold leading-tight">
                       Учебный рейтинг
@@ -110,10 +110,10 @@ export function MainPage() {
           <div className="flex flex-col gap-4">
             <div className="font-bold">Для абитуриентов</div>
 
-            <Badge className="w-6.5 h-6.5" text="new">
+            <Badge className="w-14.5 h-6.5" text="Новинка">
               <div
                 onClick={() => handleNavigation(PAGES.APPLICANT_CHAT)}
-                className="cursor-pointer bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95"
+                className="cursor-pointer bg-[#54D4C0]/10 text-[#54D4C0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95"
               >
                 <BotMessageSquare size={32} />
                 <div className="font-semibold leading-tight">ИИ помощник</div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { Toggler } from "@/components/ui/toggler";
 import { useThemeStore } from "@/features/theme/store/use-theme-store";
 import { Moon, Sun } from "lucide-react";
@@ -13,11 +14,17 @@ export function ThemeToggle() {
   const { theme, toggleTheme, isMounted } = useThemeStore();
 
   return (
-    <Toggler
-      disabled={!isMounted}
-      toggleList={viewModeItems}
-      activeToggleItem={theme || "light"}
-      onToggleChange={() => toggleTheme()}
-    />
+    <>
+      {isMounted ? (
+        <Toggler
+          disabled={!isMounted}
+          toggleList={viewModeItems}
+          activeToggleItem={theme || "light"}
+          onToggleChange={() => toggleTheme()}
+        />
+      ) : (
+        <Skeleton className="h-9 w-[104px]" />
+      )}
+    </>
   );
 }

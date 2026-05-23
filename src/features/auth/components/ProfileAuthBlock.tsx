@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/Loader";
+import { Skeleton } from "@/components/ui/skeleton";
 import { PAGES } from "@/config/pages-url.config";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { LogoutConfirm } from "@/widgets/LogoutConfirm";
@@ -16,16 +17,7 @@ export function ProfileAuthBlock({ isLoading }: AccountAuthBlockProps) {
   const isAuthLoading = isLoading || isUserPending;
 
   if (isAuthLoading) {
-    return (
-      <div className="bg-card border border-border rounded-xl p-4 anim-hover">
-        <div className="font-bold text-center text-lg md:text-xl mb-2 md:mb-4">
-          Личный кабинет
-        </div>
-        <div className="flex items-center justify-center py-4">
-          <Loader size={32} />
-        </div>
-      </div>
-    );
+    return <Skeleton className="w-full h-32.5" />;
   }
 
   return (
