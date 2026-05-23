@@ -25,11 +25,19 @@ export function ScheduleListWrapper({
   scheduleType,
 }: ScheduleListWrapperProps) {
   const handleSwipeLeft = useCallback(() => {
-    onDateChange(dayjs(selectedDate).add(1, "day").format("YYYY-MM-DD"));
+    const currentDate = dayjs(selectedDate);
+    const daysToAdd = currentDate.day() === 6 ? 2 : 1;
+
+    onDateChange(currentDate.add(daysToAdd, "day").format("YYYY-MM-DD"));
   }, [selectedDate, onDateChange]);
 
   const handleSwipeRight = useCallback(() => {
-    onDateChange(dayjs(selectedDate).subtract(1, "day").format("YYYY-MM-DD"));
+    const currentDate = dayjs(selectedDate);
+    const daysToSubtract = currentDate.day() === 1 ? 2 : 1;
+
+    onDateChange(
+      currentDate.subtract(daysToSubtract, "day").format("YYYY-MM-DD"),
+    );
   }, [selectedDate, onDateChange]);
 
   const groupedSubjects = getGroupedSubjects(subjectsList, selectedDate);

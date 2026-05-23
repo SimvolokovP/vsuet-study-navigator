@@ -44,14 +44,24 @@ export function ScheduleWrapper({
 
   const handleDateChange = useCallback(
     (days: number) => {
+      const currentDayjs = dayjs(selectedDate);
+
       if (viewMode === "list") {
-        setSelectedDate(
-          dayjs(selectedDate).add(days, "day").format("YYYY-MM-DD"),
-        );
+        let nextDate = currentDayjs.add(days, "day");
+
+        if (nextDate.day() === 0) {
+          nextDate = nextDate.add(days > 0 ? 1 : -1, "day");
+        }
+
+        setSelectedDate(nextDate.format("YYYY-MM-DD"));
       } else {
-        setSelectedDate(
-          dayjs(selectedDate).add(days, "week").format("YYYY-MM-DD"),
-        );
+        let nextDate = currentDayjs.add(days, "week");
+
+        if (nextDate.day() === 0) {
+          nextDate = nextDate.add(1, "day");
+        }
+
+        setSelectedDate(nextDate.format("YYYY-MM-DD"));
       }
     },
     [selectedDate, setSelectedDate, viewMode],
