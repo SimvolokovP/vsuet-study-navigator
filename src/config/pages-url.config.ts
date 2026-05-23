@@ -14,4 +14,5 @@ export const PAGES = {
   DIRECTORY: "/directory",
   DIRECTORY_CERTIFICATE: `/directory/certificate`,
   RESERVATIONS: "/profile/reservations",
+  APPLICANT_CHAT: "/applicant-chat"
 };

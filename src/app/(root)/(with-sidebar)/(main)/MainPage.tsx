@@ -111,7 +111,10 @@ export function MainPage() {
             <div className="font-bold">Для абитуриентов</div>
 
             <Badge className="w-6.5 h-6.5" text="new">
-              <div className="opacity-70 bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+              <div
+                onClick={() => handleNavigation(PAGES.APPLICANT_CHAT)}
+                className="cursor-pointer bg-[#937EF0]/10 text-[#937EF0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95"
+              >
                 <BotMessageSquare size={32} />
                 <div className="font-semibold leading-tight">ИИ помощник</div>
               </div>
