@@ -83,7 +83,8 @@ export function FreeAudienceParamsResult({
   return (
     <div className="w-full flex flex-col gap-4">
       <p className="text-sm md:text-lg mb-2 md:mb-4 font-bold text-center">
-        Свободные аудитории на {searchFloor} этаже:
+        Свободные аудитории на {searchFloor} этаже (
+        {dayjs(searchDatetime).format("HH:mm")}):
       </p>
 
       <div className="flex flex-col gap-3">

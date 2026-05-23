@@ -42,7 +42,7 @@ export function ViewModeToggler({
     <div className="flex justify-center w-full">
       <div className="max-w-170 w-full">
         {isPending ? (
-          <Skeleton className="w-23.5 h-8" />
+          <Skeleton className="w-full h-9" />
         ) : (
           <Toggler
             fullWidth

@@ -1,8 +1,6 @@
 import { IFreeAudienceItem } from "@/shared/types/subject.model";
-import { ErrorMessage } from "@/widgets/ErrorMessage";
 
 interface FreeAudienceCardProps {
-  // Теперь здесь принимается унифицированный массив аудиторий
   freeAudiencesData: IFreeAudienceItem[];
 }
 
@@ -22,7 +20,6 @@ export function FreeAudienceCard({ freeAudiencesData }: FreeAudienceCardProps) {
   return (
     <div className="flex flex-col gap-6">
       {freeAudiencesData.map((item) => {
-        // Защита на случай, если какой-то элемент массива пришел некорректным
         if (!item.audience) return null;
 
         return (

@@ -41,7 +41,7 @@ export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
   }
 
   return (
-    <div className="py-4">
+    <div className="py-2 md:py-4">
       <div className="flex items-center justify-between mb-4">
         <Button variant="text" onClick={handlePrevWeek} className="p-2">
           <ChevronLeft size={24} />
@@ -62,7 +62,7 @@ export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
         </Button>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         {weekDays.map((day) => (
           <div
             key={`${day.name}-${day.date}`}
