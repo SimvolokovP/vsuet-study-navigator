@@ -13,7 +13,6 @@ import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-sche
 import { FilterScheduleForm } from "@/features/schedule/components/forms/FilterScheduleForm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ResetDateButton } from "@/features/schedule/components/ResetDateButton";
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 
 export function ScheduleSearchPage() {
@@ -100,18 +99,6 @@ export function ScheduleSearchPage() {
         </Badge>
       }
       withBackButton
-      actions={
-        <div className="w-full flex justify-end">
-          {searchTriggered && (
-            <ResetDateButton
-              onDateChange={setSelectedDate}
-              scheduleMode={viewMode}
-              selectedDate={selectedDate}
-              isPending={isPending}
-            />
-          )}
-        </div>
-      }
     >
       {searchTriggered ? (
         <>

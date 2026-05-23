@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { PAGES } from "@/config/pages-url.config";
 import { GroupAuthModal } from "@/features/auth/components/GroupAuthModal";
-import { ResetDateButton } from "@/features/schedule/components/ResetDateButton";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
@@ -12,7 +11,7 @@ import { Layout } from "@/layout/Layout";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import dayjs from "dayjs";
-import { Search } from "lucide-react";
+import { CalendarCog, Search } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -71,17 +70,7 @@ export function SchedulePage() {
     <Layout
       title="Расписание"
       rightButton={
-        <Link href={PAGES.SEARCH_SCHEDULE}>
-          <Button className="block md:hidden" variant={"default"} size={"sm"}>
-            <Search size={20} />
-          </Button>
-          <Button variant={"default"} className="hidden md:block">
-            <Search size={24} />
-          </Button>
-        </Link>
-      }
-      actions={
-        <div className="flex w-full justify-end gap-2 items-start">
+        <div className="flex items-center gap-2">
           <GroupAuthModal
             trigger={
               <Button
@@ -89,16 +78,18 @@ export function SchedulePage() {
                 size={"sm"}
                 className="md:h-9"
               >
-                {userInLocalStorage.group} ({userInLocalStorage.subgroup})
+                <CalendarCog />
               </Button>
             }
           />
-          <ResetDateButton
-            onDateChange={setSelectedDate}
-            scheduleMode={viewMode}
-            selectedDate={selectedDate}
-            isPending={isPending}
-          />
+          <Link href={PAGES.SEARCH_SCHEDULE}>
+            <Button className="block md:hidden" variant={"default"} size={"sm"}>
+              <Search size={20} />
+            </Button>
+            <Button variant={"default"} className="hidden md:block">
+              <Search size={24} />
+            </Button>
+          </Link>
         </div>
       }
     >
