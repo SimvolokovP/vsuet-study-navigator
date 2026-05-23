@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import { CalendarX } from "lucide-react";
 import { Layout } from "@/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/Loader";
 import {
   Accordion,
   AccordionItem,
@@ -19,6 +18,7 @@ import { PAGES } from "@/config/pages-url.config";
 import { useMyReservations } from "@/features/audiences/hooks/use-my-reservations";
 import { useDeleteReservation } from "@/features/audiences/hooks/use-delete-reservation";
 import { ConfirmDeleteReservationModal } from "@/features/audiences/components/ConfirmDeleteReservationModal";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function MyReservationsPage() {
   const [page, setPage] = useState<number>(1);
@@ -38,8 +38,13 @@ export function MyReservationsPage() {
       <div className="w-full flex justify-center mt-4">
         <div className="max-w-170 w-full">
           {isLoading ? (
-            <div className="flex items-center justify-center py-10">
-              <Loader size={40} />
+            <div className="flex flex-col gap-4">
+              <Skeleton className="h-5 w-48 mx-auto md:mx-0 rounded-xl" />
+              <div className="flex flex-col gap-3">
+                {[...Array(3)].map((_, index) => (
+                  <Skeleton key={index} className="h-11 w-full rounded-xl" />
+                ))}
+              </div>
             </div>
           ) : !userData ? (
             <div className="bg-card border border-border rounded-xl p-6 anim-hover text-center flex flex-col items-center gap-3">
