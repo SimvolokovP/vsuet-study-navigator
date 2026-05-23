@@ -9,6 +9,7 @@ interface TogglerProps {
   activeToggleItem: string;
   onToggleChange: (value: string) => void;
   disabled?: boolean;
+  fullWidth?: boolean;
   className?: string;
 }
 
@@ -17,17 +18,24 @@ export function Toggler({
   activeToggleItem,
   onToggleChange,
   disabled,
+  fullWidth = false, 
   className,
 }: TogglerProps) {
   return (
     <TabsPrimitive.Root
       value={activeToggleItem}
       onValueChange={onToggleChange}
-      className={cn("flex", "justify-end", className)}
+      className={cn(
+        "flex",
+        "justify-center",
+        fullWidth && "w-full", 
+        className,
+      )}
     >
       <TabsPrimitive.List
         className={cn(
-          "inline-flex h-9 items-center justify-center rounded-lg bg-input p-1 text-muted-foreground shadow-sm",
+          "inline-flex border border-border h-9 items-center justify-center rounded-lg bg-input/60 p-1 text-muted-foreground shadow-sm",
+          fullWidth && "w-full", 
           disabled && "opacity-50 pointer-events-none",
         )}
       >
@@ -40,6 +48,7 @@ export function Toggler({
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               "disabled:pointer-events-none disabled:opacity-50",
               "data-[state=active]:bg-card data-[state=active]:text-inner data-[state=active]:shadow-sm",
+              fullWidth && "flex-1", 
             )}
           >
             {item.label}

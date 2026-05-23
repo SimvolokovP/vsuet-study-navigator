@@ -44,7 +44,7 @@ export function Layout({
         <p className="font-normal text-sm md:text-lg mb-2">{description}</p>
       </div>
 
-      <div className="h-full px-1 md:px-8 pb-19 md:pb-9 overflow-auto">
+      <div className="h-full px-1 md:px-8 pb-19 md:pb-9">
         {children}
       </div>
     </div>

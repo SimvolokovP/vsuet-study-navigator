@@ -1,6 +1,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Toggler } from "@/components/ui/toggler";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
+import { cn } from "@/shared/utils/cn";
 import { CalendarFold, List } from "lucide-react";
 
 interface ViewModeTogglerProps {
@@ -8,11 +9,26 @@ interface ViewModeTogglerProps {
   onViewModeChange: (v: TypeViewMode) => void;
   disabled?: boolean;
   isPending?: boolean;
+  className?: string;
 }
 
 const viewModeItems = [
-  { label: <List />, value: "list" },
-  { label: <CalendarFold />, value: "calendar" },
+  {
+    label: (
+      <span className="flex items-center gap-2">
+        <List size={20} /> Лента
+      </span>
+    ),
+    value: "list",
+  },
+  {
+    label: (
+      <span className="flex items-center gap-2">
+        <CalendarFold size={20} /> Календарь
+      </span>
+    ),
+    value: "calendar",
+  },
 ];
 
 export function ViewModeToggler({
@@ -20,22 +36,24 @@ export function ViewModeToggler({
   viewMode,
   disabled = false,
   isPending = false,
+  className,
 }: ViewModeTogglerProps) {
   return (
-    <div>
-      {isPending ? (
-        <>
+    <div className="flex justify-center w-full">
+      <div className="max-w-170 w-full">
+        {isPending ? (
           <Skeleton className="w-23.5 h-8" />
-        </>
-      ) : (
-        <Toggler
-          className=""
-          toggleList={viewModeItems}
-          activeToggleItem={viewMode}
-          onToggleChange={(v: string) => onViewModeChange(v as TypeViewMode)}
-          disabled={disabled}
-        />
-      )}
+        ) : (
+          <Toggler
+            fullWidth
+            className={cn(className, "w-full")}
+            toggleList={viewModeItems}
+            activeToggleItem={viewMode}
+            onToggleChange={(v: string) => onViewModeChange(v as TypeViewMode)}
+            disabled={disabled}
+          />
+        )}
+      </div>
     </div>
   );
 }

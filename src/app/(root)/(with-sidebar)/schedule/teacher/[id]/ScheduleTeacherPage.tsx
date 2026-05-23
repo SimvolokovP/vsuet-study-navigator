@@ -1,8 +1,9 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
+import { ResetDateButton } from "@/features/schedule/components/ResetDateButton";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
+import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useTeacherSchedule } from "@/features/schedule/hooks/use-teacher-schedule";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
@@ -32,16 +33,22 @@ export function ScheduleTeacherPage() {
       withBackButton
       title={!!error ? "Ошибка" : getTeacherName()}
       actions={
-        <ScheduleActions
-          dataError={error}
-          isDataPending={isPending}
-          viewMode={viewMode}
-          onViewModeChange={setViewMode}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-        />
+        <div className="flex justify-end w-full">
+          <ResetDateButton
+            onDateChange={setSelectedDate}
+            scheduleMode={viewMode}
+            selectedDate={selectedDate}
+            isPending={isPending}
+          />
+        </div>
       }
     >
+      <ViewModeToggler
+        disabled={isPending || !!error}
+        onViewModeChange={setViewMode}
+        viewMode={viewMode}
+        isPending={isPending}
+      />
       <ScheduleWrapper
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}

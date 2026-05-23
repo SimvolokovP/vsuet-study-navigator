@@ -8,12 +8,13 @@ import { useState } from "react";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
-import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
 import { SidePanel } from "@/components/ui/side-panel";
 import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-schedule";
 import { FilterScheduleForm } from "@/features/schedule/components/forms/FilterScheduleForm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ResetDateButton } from "@/features/schedule/components/ResetDateButton";
+import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 
 export function ScheduleSearchPage() {
   const [isModalFilterForm, setIsModalFilterForm] = useState<boolean>(false);
@@ -34,7 +35,6 @@ export function ScheduleSearchPage() {
 
   const { searchedScheduleData, error, isPending, refetch } =
     useSearchedSchedule(filterParams, selectedDate, searchTriggered);
-
 
   const getFilterParamsCount = (filterParams: IFilter) => {
     let count = 0;
@@ -101,30 +101,36 @@ export function ScheduleSearchPage() {
       }
       withBackButton
       actions={
-        <div>
+        <div className="w-full flex justify-end">
           {searchTriggered && (
-            <ScheduleActions
-              dataError={error}
-              isDataPending={isPending}
-              viewMode={viewMode}
-              onViewModeChange={setViewMode}
+            <ResetDateButton
+              onDateChange={setSelectedDate}
+              scheduleMode={viewMode}
               selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
+              isPending={isPending}
             />
           )}
         </div>
       }
     >
       {searchTriggered ? (
-        <ScheduleWrapper
-          data={searchedScheduleData}
-          error={error}
-          isPending={isPending}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          viewMode={viewMode}
-          scheduleType="search"
-        />
+        <>
+          <ViewModeToggler
+            disabled={isPending || !!error}
+            onViewModeChange={setViewMode}
+            viewMode={viewMode}
+            isPending={isPending}
+          />
+          <ScheduleWrapper
+            data={searchedScheduleData}
+            error={error}
+            isPending={isPending}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            viewMode={viewMode}
+            scheduleType="search"
+          />
+        </>
       ) : (
         <div className="mt-8 text-center text-foreground">
           Выберете фильтры для поиска &#128270;

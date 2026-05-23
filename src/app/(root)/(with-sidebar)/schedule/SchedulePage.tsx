@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { PAGES } from "@/config/pages-url.config";
 import { GroupAuthModal } from "@/features/auth/components/GroupAuthModal";
-import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
+import { ResetDateButton } from "@/features/schedule/components/ResetDateButton";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
+import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
@@ -92,17 +93,21 @@ export function SchedulePage() {
               </Button>
             }
           />
-          <ScheduleActions
-            dataError={error}
-            isDataPending={isPending}
-            viewMode={viewMode}
-            onViewModeChange={setViewMode}
+          <ResetDateButton
+            onDateChange={setSelectedDate}
+            scheduleMode={viewMode}
             selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
+            isPending={isPending}
           />
         </div>
       }
     >
+      <ViewModeToggler
+        disabled={isPending || !!error}
+        onViewModeChange={setViewMode}
+        viewMode={viewMode}
+        isPending={isPending}
+      />
       <ScheduleWrapper
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}

@@ -57,7 +57,7 @@ export function ScheduleCalendarWrapper({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-4">
       <CalendarControl
         currentWeek={currentWeek}
         onWeekChange={handleWeekChange}
