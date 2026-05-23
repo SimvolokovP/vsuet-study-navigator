@@ -10,6 +10,7 @@ import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import { Button } from "@/components/ui/button";
 import { NumberAuthModal } from "@/features/auth/components/NumberAuthModal";
+import { Search, UserCog } from "lucide-react";
 
 export default function RatingPage() {
   const [ratingMode] = useState<TRatingMode>("my");
@@ -80,15 +81,27 @@ export default function RatingPage() {
   return (
     <Layout
       title="Рейтинг"
-      actions={
-        <div className="flex w-full justify-end gap-2 items-center">
+      rightButton={
+        <div className="flex items-center gap-2">
           <NumberAuthModal
             trigger={
               <Button size={"sm"} className="md:h-9">
-                {userInLocalStorage.number}
+                <UserCog />
               </Button>
             }
           />
+
+          <Button
+            disabled
+            className="block md:hidden"
+            variant={"default"}
+            size={"sm"}
+          >
+            <Search size={20} />
+          </Button>
+          <Button disabled variant={"default"} className="hidden md:block">
+            <Search size={24} />
+          </Button>
         </div>
       }
     >
