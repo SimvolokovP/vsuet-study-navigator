@@ -51,7 +51,7 @@
     #f8f9fb;
 }
 
-.dark {
+[data-theme="dark"] {
   --background: 0 0% 8%;
   --foreground: 215 25% 81%;
   --inner: 0 0% 100%;
@@ -166,10 +166,6 @@ body {
   @media (max-width: 1200px) {
     font-size: 16px;
   }
-
-  /* @media (max-width: 768px) {
-    font-size: 14px;
-  } */
 }
 
 .card {

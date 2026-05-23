@@ -16,7 +16,7 @@ import dayjs from "@/shared/utils/dayjs";
 import {
   TypeSchduleType,
   TypeViewMode,
-} from "@/features/types/schedule.models";
+} from "@/features/schedule/types/schedule.models";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import { ScheduleListWrapper } from "./list/ScheduleListWrapper";
 import { ScheduleCalendarWrapper } from "./calendar/ScheduleCalendarWrapper";

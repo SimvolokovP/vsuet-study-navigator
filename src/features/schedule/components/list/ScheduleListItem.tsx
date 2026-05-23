@@ -10,7 +10,7 @@ import {
   getGroupNames,
   renderWithSeparators,
 } from "@/shared/helpers/renderItemHelpers";
-import { TypeSchduleType } from "@/features/types/schedule.models";
+import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import { RemainingTimeBadge } from "../RemainingTimeBadge";
 import Link from "next/link";
 import { PAGES } from "@/config/pages-url.config";

@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { useTeacherSchedule } from "@/features/schedule/hooks/use-teacher-schedule";
-import { TypeViewMode } from "@/features/types/schedule.models";
+import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import dayjs from "dayjs";
 import { useState } from "react";

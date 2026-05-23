@@ -1,8 +1,8 @@
 "use client";
 
 import { Toggler } from "@/components/ui/toggler";
+import { useThemeStore } from "@/features/theme/store/use-theme-store";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 
 const viewModeItems = [
   { label: <Sun />, value: "light" },
@@ -10,13 +10,14 @@ const viewModeItems = [
 ];
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme, isMounted } = useThemeStore();
 
   return (
     <Toggler
+      disabled={!isMounted}
       toggleList={viewModeItems}
       activeToggleItem={theme || "light"}
-      onToggleChange={(v: string) => setTheme(v)}
+      onToggleChange={() => toggleTheme()}
     />
   );
 }

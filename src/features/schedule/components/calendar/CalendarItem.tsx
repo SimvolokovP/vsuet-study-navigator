@@ -1,6 +1,6 @@
 "use client";
 
-import { TypeSchduleType } from "@/features/types/schedule.models";
+import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import {
   getCurrentLessonInfo,
   getShortTeacherName,

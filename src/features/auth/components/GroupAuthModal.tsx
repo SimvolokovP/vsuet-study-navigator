@@ -36,7 +36,7 @@ export function GroupAuthModal({
   return (
     <Modal open={open} onOpenChange={onOpenChange}>
       <ModalTrigger asChild>
-        {trigger || <Button variant="primary">Ввести группу</Button>}
+        {trigger || <Button variant="primary">Выбрать группу</Button>}
       </ModalTrigger>
       <ModalContent className="sm:max-w-md">
         <ModalHeader>

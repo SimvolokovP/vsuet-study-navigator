@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Toggler } from "@/components/ui/toggler";
-import { TypeViewMode } from "@/features/types/schedule.models";
+import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { CalendarFold, List } from "lucide-react";
 
 interface ViewModeTogglerProps {

@@ -1,6 +1,6 @@
 "use client";
 
-import { TypeViewMode } from "@/features/types/schedule.models";
+import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { ViewModeToggler } from "./ViewModeToggler";
 import { ResetDateButton } from "./ResetDateButton";
 

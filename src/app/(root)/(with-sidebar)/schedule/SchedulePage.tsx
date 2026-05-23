@@ -6,7 +6,7 @@ import { GroupAuthModal } from "@/features/auth/components/GroupAuthModal";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
-import { TypeViewMode } from "@/features/types/schedule.models";
+import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
@@ -54,7 +54,7 @@ export function SchedulePage() {
               }}
             />
 
-            <div className="flex justify-center items-center gap-4 mt-2 md:mt-4">
+            <div className="flex justify-center items-center gap-4 mt-2 md:mt-4 flex-wrap">
               <GroupAuthModal />
               <Link href={PAGES.SEARCH_SCHEDULE}>
                 <Button>Поиск расписания по фильтрам</Button>

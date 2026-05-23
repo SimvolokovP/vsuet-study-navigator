@@ -7,6 +7,7 @@ import {
   SITE_PUBLISHER,
 } from "@/shared/constants/seo.constants";
 import { Providers } from "./providers";
+import { ThemeScript } from "@/features/theme/components/ThemeScript";
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        <ThemeScript />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

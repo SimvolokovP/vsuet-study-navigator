@@ -5,7 +5,7 @@ import { IFilter } from "@/shared/types/filter.model";
 import dayjs from "dayjs";
 import { Funnel } from "lucide-react";
 import { useState } from "react";
-import { TypeViewMode } from "@/features/types/schedule.models";
+import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { ScheduleActions } from "@/features/schedule/components/ScheduleActions";

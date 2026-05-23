@@ -5,7 +5,7 @@ import { ISubject } from "@/shared/types/subject.model";
 import { getFormattedTimeSlot } from "@/shared/helpers/subjectHelpers";
 import { useCallback } from "react";
 import { getGroupedSubjects } from "@/shared/helpers/scheduleHelpers";
-import { TypeSchduleType } from "@/features/types/schedule.models";
+import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import { WeekDays } from "./WeekDays";
 import { Divider } from "@/components/ui/divider";
 import { ScheduleListItem } from "./ScheduleListItem";

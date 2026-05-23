@@ -8,7 +8,7 @@ import { TIME_SLOTS } from "@/shared/data/date.data";
 import { getWeekDays } from "@/shared/helpers/dateHelpers";
 import { getFormattedTimeSlot } from "@/shared/helpers/subjectHelpers";
 import { getGroupedSubjectsForSlot } from "@/shared/helpers/scheduleHelpers";
-import { TypeSchduleType } from "@/features/types/schedule.models";
+import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import { CalendarControl } from "./CalendarControl";
 import { CalendarItem } from "./CalendarItem";
 import { SubjectInfo } from "./SubjectInfo";
