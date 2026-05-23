@@ -102,12 +102,14 @@ export function ScheduleSearchPage() {
     >
       {searchTriggered ? (
         <>
-          <ViewModeToggler
-            disabled={isPending || !!error}
-            onViewModeChange={setViewMode}
-            viewMode={viewMode}
-            isPending={isPending}
-          />
+          {!error && (
+            <ViewModeToggler
+              disabled={isPending || !!error}
+              onViewModeChange={setViewMode}
+              viewMode={viewMode}
+              isPending={isPending}
+            />
+          )}
           <ScheduleWrapper
             data={searchedScheduleData}
             error={error}

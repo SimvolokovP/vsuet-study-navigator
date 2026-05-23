@@ -29,12 +29,14 @@ export function ScheduleTeacherPage() {
 
   return (
     <Layout withBackButton title={!!error ? "Ошибка" : getTeacherName()}>
-      <ViewModeToggler
-        disabled={isPending || !!error}
-        onViewModeChange={setViewMode}
-        viewMode={viewMode}
-        isPending={isPending}
-      />
+      {!error && (
+        <ViewModeToggler
+          disabled={isPending || !!error}
+          onViewModeChange={setViewMode}
+          viewMode={viewMode}
+          isPending={isPending}
+        />
+      )}
       <ScheduleWrapper
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
