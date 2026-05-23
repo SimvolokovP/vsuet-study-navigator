@@ -4,6 +4,7 @@ import axios, {
   InternalAxiosRequestConfig,
   AxiosResponse,
 } from "axios";
+import { parseCookies, setCookie, destroyCookie } from "nookies";
 
 interface FailedRequest {
   resolve: (token: string) => void;
@@ -36,10 +37,8 @@ const processQueue = (
 
 API_HOST.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token =
-      typeof window !== "undefined"
-        ? localStorage.getItem("accessToken")
-        : null;
+    const cookies = parseCookies();
+    const token = cookies.accessToken;
 
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -78,10 +77,8 @@ API_HOST.interceptors.response.use(
       originalRequest._retry = true;
       isRefreshing = true;
 
-      const refreshToken =
-        typeof window !== "undefined"
-          ? localStorage.getItem("refreshToken")
-          : null;
+      const cookies = parseCookies();
+      const refreshToken = cookies.refreshToken;
 
       if (!refreshToken) {
         logoutUser();
@@ -91,9 +88,15 @@ API_HOST.interceptors.response.use(
       try {
         const { data } = await authService.refresh({ refresh: refreshToken });
 
-        if (typeof window !== "undefined") {
-          localStorage.setItem("accessToken", data.access);
-          if (data.refresh) localStorage.setItem("refreshToken", data.refresh);
+        setCookie(null, "accessToken", data.access, {
+          path: "/",
+          maxAge: 30 * 24 * 60 * 60,
+        });
+        if (data.refresh) {
+          setCookie(null, "refreshToken", data.refresh, {
+            path: "/",
+            maxAge: 30 * 24 * 60 * 60,
+          });
         }
 
         if (originalRequest.headers) {
@@ -117,9 +120,10 @@ API_HOST.interceptors.response.use(
 );
 
 const logoutUser = (): void => {
+  destroyCookie(null, "accessToken", { path: "/" });
+  destroyCookie(null, "refreshToken", { path: "/" });
+
   if (typeof window !== "undefined") {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
     window.location.href = "/login";
   }
 };

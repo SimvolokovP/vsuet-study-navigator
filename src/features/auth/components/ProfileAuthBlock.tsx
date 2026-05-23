@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/Loader";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PAGES } from "@/config/pages-url.config";
 import { useAuth } from "@/features/auth/hooks/use-auth";
@@ -50,12 +49,12 @@ export function ProfileAuthBlock({ isLoading }: AccountAuthBlockProps) {
           )}
 
           <div className="flex gap-2 justify-center mt-2 flex-wrap">
-            <LogoutConfirm>
-              <Button variant="primary">Выйти из аккаунта</Button>
-            </LogoutConfirm>
             <Link href={PAGES.RESERVATIONS}>
               <Button>Заброннированные аудитории</Button>
             </Link>
+            <LogoutConfirm>
+              <Button variant="destructive">Выйти из аккаунта</Button>
+            </LogoutConfirm>
           </div>
         </div>
       ) : (

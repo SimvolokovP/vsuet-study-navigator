@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { authService } from "@/features/auth/services/auth.service";
 import { LoginRequest } from "@/features/auth/types/auth.model";
+import { setCookie } from "nookies";
 
 export function useLogin() {
   const queryClient = useQueryClient();
@@ -8,10 +9,15 @@ export function useLogin() {
   const loginMutation = useMutation({
     mutationFn: (data: LoginRequest) => authService.login(data),
     onSuccess: (response) => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("accessToken", response.data.access);
-        localStorage.setItem("refreshToken", response.data.refresh);
-      }
+      setCookie(null, "accessToken", response.data.access, {
+        path: "/",
+        maxAge: 30 * 24 * 60 * 60,
+      });
+      setCookie(null, "refreshToken", response.data.refresh, {
+        path: "/",
+        maxAge: 30 * 24 * 60 * 60,
+      });
+
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
     },
   });
