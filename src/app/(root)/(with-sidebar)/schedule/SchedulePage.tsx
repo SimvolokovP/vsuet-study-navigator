@@ -19,6 +19,8 @@ export function SchedulePage() {
   const { userInLocalStorage } = useUserLocalStorage();
   const [viewMode, setViewMode] = useState<TypeViewMode>("list");
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const [selectedDate, setSelectedDate] = useState<string>(
     dayjs().format("YYYY-MM-DD"),
   );
@@ -72,11 +74,14 @@ export function SchedulePage() {
       rightButton={
         <div className="flex items-center gap-2">
           <GroupAuthModal
+            open={isModalOpen}
+            onOpenChange={setIsModalOpen}
             trigger={
               <Button
                 disabled={isPending || !!error}
                 size={"sm"}
                 className="md:h-9"
+                onClick={() => setIsModalOpen(true)}
               >
                 <CalendarCog />
               </Button>

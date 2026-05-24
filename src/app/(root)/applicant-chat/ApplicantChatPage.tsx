@@ -27,7 +27,7 @@ export function ApplicantChatPage() {
   //   } = useChat();
 
   return (
-    <ChatLayout title="Поиск с ИИ">
+    <ChatLayout title="ИИ помощник">
       <div className="h-full max-h-full flex flex-col justify-between overflow-hidden">
         {/* {messages.length === 0 ? (
           <ChatWelcome

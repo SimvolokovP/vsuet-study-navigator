@@ -10,9 +10,10 @@ import {
 } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 import { GroupAuthForm } from "./GroupAuthForm";
+import { ReactNode } from "react";
 
 interface GroupAuthModalProps {
-  trigger?: React.ReactNode;
+  trigger?: ReactNode;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   onSuccess?: () => void;

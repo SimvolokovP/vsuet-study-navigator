@@ -19,12 +19,17 @@ import { useMyReservations } from "@/features/audiences/hooks/use-my-reservation
 import { useDeleteReservation } from "@/features/audiences/hooks/use-delete-reservation";
 import { ConfirmDeleteReservationModal } from "@/features/audiences/components/ConfirmDeleteReservationModal";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorMessage } from "@/widgets/ErrorMessage";
 
 export function MyReservationsPage() {
   const [page, setPage] = useState<number>(1);
 
   const { userData, isPending: isUserPending } = useAuth();
-  const { reservationsData, isPending: isResPending } = useMyReservations(page);
+  const {
+    reservationsData,
+    isPending: isResPending,
+    error,
+  } = useMyReservations(page);
   const { deleteReservation, isPending: isDeleting } = useDeleteReservation();
 
   const isLoading = isUserPending || (isResPending && !reservationsData);
@@ -32,6 +37,18 @@ export function MyReservationsPage() {
   const ITEMS_PER_PAGE = 10;
   const count = reservationsData?.count || 0;
   const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
+
+  if (error) {
+    return (
+      <Layout title="Мои бронирования" withBackButton>
+        <ErrorMessage
+          error={error}
+          text="Произошла ошибка при загрузке бронирований. Пожалуйста, перезагрузите
+          страницу или попробуйте позже."
+        />
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="Мои бронирования" withBackButton>

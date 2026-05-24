@@ -18,6 +18,8 @@ export default function RatingPage() {
   const [searchQuery] = useState<string>("");
   const [displayData] = useState<IRatingItem[]>(MOCK_RATING_DATA);
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const { userInLocalStorage } = useUserLocalStorage();
 
   // const handleSearch = useCallback((searchValue: string) => {
@@ -84,8 +86,14 @@ export default function RatingPage() {
       rightButton={
         <div className="flex items-center gap-2">
           <NumberAuthModal
+            open={isModalOpen}
+            onOpenChange={setIsModalOpen}
             trigger={
-              <Button size={"sm"} className="md:h-9">
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                size={"sm"}
+                className="md:h-9"
+              >
                 <UserCog />
               </Button>
             }
