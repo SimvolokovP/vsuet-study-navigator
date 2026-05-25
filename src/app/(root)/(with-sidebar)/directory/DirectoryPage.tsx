@@ -18,10 +18,9 @@ export function DirectoryPage() {
           <DirectoryItem disabled title="Кафедры" icon={BriefcaseBusiness} />
           <DirectoryItem disabled title="Специальности" icon={UserCog} />
           <DirectoryItem
-            disabled
             title="Бланки заявлений"
             icon={Newspaper}
-            // href={PAGES.DIRECTORY_CERTIFICATE}
+            href={PAGES.DIRECTORY_STATEMENTS}
           />
         </div>
       </div>
