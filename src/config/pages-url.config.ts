@@ -13,6 +13,7 @@ export const PAGES = {
   SCHEDULE_TEACHER: (id: string) => `/schedule/teacher/${id}`,
   DIRECTORY: "/directory",
   DIRECTORY_CERTIFICATE: `/directory/certificate`,
+  DIRECTORY_FACULTIES: "/directory/faculties",
   RESERVATIONS: "/profile/reservations",
-  APPLICANT_CHAT: "/applicant-chat"
+  APPLICANT_CHAT: "/applicant-chat",
 };

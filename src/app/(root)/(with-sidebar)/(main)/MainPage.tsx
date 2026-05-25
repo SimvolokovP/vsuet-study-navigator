@@ -19,6 +19,7 @@ import {
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export function MainPage() {
   const getGreeting = () => {
@@ -111,13 +112,15 @@ export function MainPage() {
             <div className="font-bold">Для абитуриентов</div>
 
             <Badge className="w-14.5 h-6.5" text="Новинка">
-              <div
-                onClick={() => handleNavigation(PAGES.APPLICANT_CHAT)}
-                className="cursor-pointer bg-[#54D4C0]/10 text-[#54D4C0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95"
+              <Link
+                target="_blank"
+                href={"https://vsuet-study-applicant-chat-sbc7.vercel.app"}
               >
-                <BotMessageSquare size={32} />
-                <div className="font-semibold leading-tight">ИИ помощник</div>
-              </div>
+                <div className="cursor-pointer bg-[#54D4C0]/10 text-[#54D4C0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
+                  <BotMessageSquare size={32} />
+                  <div className="font-semibold leading-tight">ИИ помощник</div>
+                </div>
+              </Link>
             </Badge>
           </div>
         </div>
