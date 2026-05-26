@@ -8,8 +8,8 @@ import { cn } from "@/shared/utils/cn";
 interface Statement {
   id: number;
   title: string;
-  pdfUrl?: string; 
-  wordUrl?: string; 
+  pdfUrl?: string;
+  wordUrl?: string;
 }
 
 const ITEMS_PER_PAGE = 10;
@@ -18,30 +18,24 @@ const mockStatements: Statement[] = [
   {
     id: 1,
     title: "Заявление на академический отпуск",
-    pdfUrl: "/docs/doc.pdf",
-    wordUrl: "/docs/doc.docx",
+    pdfUrl: "/docs/polozh-ob-academ-otpuske.pdf",
+    wordUrl: "/docs/polozh-ob-academ-otpuske.docx",
   },
   {
     id: 2,
     title: "Заявление на материальную помощь",
-    pdfUrl: "/docs/doc.pdf",
+    pdfUrl: "/docs/pom.pdf",
   },
   {
     id: 3,
-    title: "Заявление на смену персональных данных (фамилии)",
-    wordUrl: "/docs/doc.docx",
+    title: "Заявление о переводе на бюджетную форму обучения",
+    pdfUrl: "/docs/P_3.2.05-2020_perehod-s-platn.pdf",
   },
   {
     id: 4,
-    title: "Заявление о переводе на бюджетную форму обучения",
-    pdfUrl: "/docs/doc.pdf",
-    wordUrl: "/docs/doc.docx",
-  },
-  {
-    id: 5,
     title: "Заявление на предоставление места в общежитии",
-    pdfUrl: "/docs/doc.pdf",
-    wordUrl: "/docs/doc.docx",
+    pdfUrl: "/docs/zayavl-student.pdf",
+    wordUrl: "/docs/zayavl-student.docx",
   },
 ];
 
@@ -56,7 +50,7 @@ export default function StatementsPage() {
     },
     {
       header: "Скачать",
-      className: "w-48 text-center", 
+      className: "w-48 text-center",
       accessor: (statement) => (
         <div className="flex items-center justify-center gap-2">
           {statement.pdfUrl ? (
@@ -65,7 +59,7 @@ export default function StatementsPage() {
               download
               className={cn(
                 "px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors",
-                "bg-red-500/10 border-red-500/20 text-red-500 hover:bg-red-500/20"
+                "bg-red-500/10 border-red-500/20 text-red-500 hover:bg-red-500/20",
               )}
             >
               PDF
@@ -82,7 +76,7 @@ export default function StatementsPage() {
               download
               className={cn(
                 "px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors",
-                "bg-blue-500/10 border-blue-500/20 text-blue-500 hover:bg-blue-500/20"
+                "bg-blue-500/10 border-blue-500/20 text-blue-500 hover:bg-blue-500/20",
               )}
             >
               WORD
@@ -100,7 +94,7 @@ export default function StatementsPage() {
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginatedData = mockStatements.slice(
     startIndex,
-    startIndex + ITEMS_PER_PAGE
+    startIndex + ITEMS_PER_PAGE,
   );
 
   return (
