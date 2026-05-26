@@ -18,47 +18,45 @@ const mockStatements: Statement[] = [
   {
     id: 1,
     title: "Заявление на академический отпуск",
-    pdfUrl: "/docs/academic-leave.pdf",
-    wordUrl: "/docs/academic-leave.docx",
+    pdfUrl: "/docs/doc.pdf",
+    wordUrl: "/docs/doc.docx",
   },
   {
     id: 2,
     title: "Заявление на материальную помощь",
-    pdfUrl: "/docs/financial-aid.pdf",
+    pdfUrl: "/docs/doc.pdf",
   },
   {
     id: 3,
     title: "Заявление на смену персональных данных (фамилии)",
-    wordUrl: "/docs/name-change.docx",
+    wordUrl: "/docs/doc.docx",
   },
   {
     id: 4,
     title: "Заявление о переводе на бюджетную форму обучения",
-    pdfUrl: "/docs/transfer-budget.pdf",
-    wordUrl: "/docs/transfer-budget.docx",
+    pdfUrl: "/docs/doc.pdf",
+    wordUrl: "/docs/doc.docx",
   },
   {
     id: 5,
     title: "Заявление на предоставление места в общежитии",
-    pdfUrl: "/docs/dormitory.pdf",
-    wordUrl: "/docs/dormitory.docx",
+    pdfUrl: "/docs/doc.pdf",
+    wordUrl: "/docs/doc.docx",
   },
 ];
 
 export default function StatementsPage() {
   const [page, setPage] = useState(1);
 
-  // Конфигурация колонок таблицы
   const columns: Column<Statement>[] = [
     {
       header: "Название документа",
-      // Выравнивание по левому краю для названий документов выглядит аккуратнее
       className: "text-left pl-4",
       accessor: "title",
     },
     {
       header: "Скачать",
-      className: "w-48 text-center", // Фиксированная ширина для колонки скачивания
+      className: "w-48 text-center", 
       accessor: (statement) => (
         <div className="flex items-center justify-center gap-2">
           {statement.pdfUrl ? (
@@ -99,7 +97,6 @@ export default function StatementsPage() {
     },
   ];
 
-  // Расчет пагинации
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginatedData = mockStatements.slice(
     startIndex,
