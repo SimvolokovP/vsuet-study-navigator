@@ -60,7 +60,7 @@ export default function FacultiesPage() {
 
   const columns: Column<Faculty>[] = [
     { header: "Название", accessor: "name" },
-    { header: "Аббревиатура", accessor: "name_short" },
+    { header: "Сокращение", accessor: "name_short" },
   ];
 
   const startIndex = (page - 1) * ITEMS_PER_PAGE;

@@ -15,6 +15,7 @@ export const PAGES = {
   DIRECTORY_CERTIFICATE: `/directory/certificate`,
   DIRECTORY_FACULTIES: "/directory/faculties",
   DIRECTORY_STATEMENTS: "/directory/statements",
+  DIRECTORY_DEPARTMENTS: "/directory/departments",
   RESERVATIONS: "/profile/reservations",
   APPLICANT_CHAT: "/applicant-chat",
 };

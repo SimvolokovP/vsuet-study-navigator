@@ -15,7 +15,11 @@ export function DirectoryPage() {
             icon={Landmark}
             href={PAGES.DIRECTORY_FACULTIES}
           />
-          <DirectoryItem disabled title="Кафедры" icon={BriefcaseBusiness} />
+          <DirectoryItem
+            title="Кафедры"
+            icon={BriefcaseBusiness}
+            href={PAGES.DIRECTORY_DEPARTMENTS}
+          />
           <DirectoryItem disabled title="Специальности" icon={UserCog} />
           <DirectoryItem
             title="Бланки заявлений"
