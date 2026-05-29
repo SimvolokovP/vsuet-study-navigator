@@ -38,7 +38,10 @@ export function NumberAuthModal({
       <ModalTrigger asChild>
         {trigger || <Button variant="primary">Ввести номер зачетки</Button>}
       </ModalTrigger>
-      <ModalContent className="sm:max-w-md">
+      <ModalContent
+        className="sm:max-w-md"
+        onOpenAutoFocus={(e) => e.preventDefault()}
+      >
         <ModalHeader>
           <ModalTitle>Номер зачетки</ModalTitle>
           <ModalDescription>
