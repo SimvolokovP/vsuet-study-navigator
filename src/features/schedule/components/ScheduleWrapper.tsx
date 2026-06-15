@@ -1,7 +1,5 @@
 "use client";
 
-// import { ScheduleListWrapper } from "./ScheduleListWrapper";
-// import { ScheduleCalendarWrapper } from "./ScheduleCalendarWrapper";
 import { ISubject } from "@/shared/types/subject.model";
 import {
   Dispatch,
@@ -10,14 +8,11 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { ScheduleListSkeleton } from "./skeletons/ScheduleListSkeleton";
-import { ScheduleCalendarSkeleton } from "./skeletons/ScheduleCalendarSkeleton";
 import dayjs from "@/shared/utils/dayjs";
 import {
   TypeSchduleType,
   TypeViewMode,
 } from "@/features/schedule/types/schedule.models";
-import { ErrorMessage } from "@/widgets/ErrorMessage";
 import { ScheduleListWrapper } from "./list/ScheduleListWrapper";
 import { ScheduleCalendarWrapper } from "./calendar/ScheduleCalendarWrapper";
 
@@ -88,45 +83,31 @@ export function ScheduleWrapper({
     }
   }, [handleKeyDown]);
 
-  if (error) {
-    return (
-      <ErrorMessage
-        error={error}
-        text="Произошла ошибка при загрузке расписания. Пожалуйста, перезагрузите
-        страницу или попробуйте позже."
-      />
-    );
-  }
-
   return (
     <div className="h-full" ref={containerRef} tabIndex={0}>
       {viewMode === "list" && (
         <>
-          {isPending ? (
-            <ScheduleListSkeleton />
-          ) : (
-            <ScheduleListWrapper
-              scheduleType={scheduleType}
-              subjectsList={data}
-              selectedDate={selectedDate}
-              onDateChange={setSelectedDate}
-            />
-          )}
+          <ScheduleListWrapper
+            scheduleType={scheduleType}
+            subjectsList={data}
+            selectedDate={selectedDate}
+            onDateChange={setSelectedDate}
+            isPending={isPending}
+            error={error}
+          />
         </>
       )}
 
       {viewMode === "calendar" && (
         <>
-          {isPending ? (
-            <ScheduleCalendarSkeleton />
-          ) : (
-            <ScheduleCalendarWrapper
-              scheduleType={scheduleType}
-              subjectsList={data}
-              selectedDate={selectedDate}
-              onDateChange={setSelectedDate}
-            />
-          )}
+          <ScheduleCalendarWrapper
+            scheduleType={scheduleType}
+            subjectsList={data}
+            selectedDate={selectedDate}
+            onDateChange={setSelectedDate}
+            isPending={isPending}
+            error={error}
+          />
         </>
       )}
     </div>

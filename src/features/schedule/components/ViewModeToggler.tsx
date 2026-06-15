@@ -1,4 +1,3 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import { Toggler } from "@/components/ui/toggler";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { cn } from "@/shared/utils/cn";
@@ -41,18 +40,14 @@ export function ViewModeToggler({
   return (
     <div className="flex justify-center w-full">
       <div className="max-w-170 w-full">
-        {isPending ? (
-          <Skeleton className="w-full h-9" />
-        ) : (
-          <Toggler
-            fullWidth
-            className={cn(className, "w-full")}
-            toggleList={viewModeItems}
-            activeToggleItem={viewMode}
-            onToggleChange={(v: string) => onViewModeChange(v as TypeViewMode)}
-            disabled={disabled}
-          />
-        )}
+        <Toggler
+          fullWidth
+          className={cn(className, "w-full")}
+          toggleList={viewModeItems}
+          activeToggleItem={viewMode}
+          onToggleChange={(v: string) => onViewModeChange(v as TypeViewMode)}
+          disabled={disabled || isPending}
+        />
       </div>
     </div>
   );

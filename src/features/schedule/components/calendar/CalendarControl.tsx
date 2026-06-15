@@ -9,11 +9,13 @@ import { Button } from "@/components/ui/button";
 interface CalendarControlProps {
   currentWeek: Dayjs;
   onWeekChange: (newWeek: Dayjs) => void;
+  isPending: boolean;
 }
 
 export function CalendarControl({
   currentWeek,
   onWeekChange,
+  isPending,
 }: CalendarControlProps) {
   const monthName = MONTH_NAMES[currentWeek.month()];
   const weekType = getWeekType(currentWeek);
@@ -43,7 +45,12 @@ export function CalendarControl({
 
   return (
     <div className="flex justify-center gap-1 md:gap-5 items-center mb-2 md:mb-4">
-      <Button variant="text" onClick={handlePrevWeek} className="p-1 md:p-2">
+      <Button
+        disabled={isPending}
+        variant="text"
+        onClick={handlePrevWeek}
+        className="p-1 md:p-2"
+      >
         <ChevronLeft size={24} />
       </Button>
 
@@ -58,7 +65,12 @@ export function CalendarControl({
         </div>
       </div>
 
-      <Button variant="text" onClick={handleNextWeek} className="p-1 md:p-2">
+      <Button
+        disabled={isPending}
+        variant="text"
+        onClick={handleNextWeek}
+        className="p-1 md:p-2"
+      >
         <ChevronRight size={24} />
       </Button>
     </div>

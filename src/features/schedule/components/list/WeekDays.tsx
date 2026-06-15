@@ -11,9 +11,14 @@ import { Button } from "@/components/ui/button";
 interface WeekDaysProps {
   selectedDate: string;
   onDateChange: (date: string) => void;
+  isPending: boolean;
 }
 
-export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
+export function WeekDays({
+  selectedDate,
+  onDateChange,
+  isPending,
+}: WeekDaysProps) {
   const currentWeek = useMemo(() => {
     return dayjs(selectedDate).startOf("week").add(1, "day");
   }, [selectedDate]);
@@ -43,7 +48,12 @@ export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
   return (
     <div className="py-2 md:py-4">
       <div className="flex items-center justify-between mb-4">
-        <Button variant="text" onClick={handlePrevWeek} className="p-2">
+        <Button
+          disabled={isPending}
+          variant="text"
+          onClick={handlePrevWeek}
+          className="p-2"
+        >
           <ChevronLeft size={24} />
         </Button>
 
@@ -57,7 +67,12 @@ export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
           </div>
         </div>
 
-        <Button variant="text" onClick={handleNextWeek} className="p-2">
+        <Button
+          disabled={isPending}
+          variant="text"
+          onClick={handleNextWeek}
+          className="p-2"
+        >
           <ChevronRight size={24} />
         </Button>
       </div>
@@ -78,6 +93,7 @@ export function WeekDays({ selectedDate, onDateChange }: WeekDaysProps) {
               {day.name}
             </div>
             <Button
+              disabled={isPending}
               className={`w-10 h-10 md:w-11.25 md:h-11.25`}
               variant={
                 selectedDate === day.dateString
