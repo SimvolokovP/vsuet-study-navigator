@@ -8,6 +8,7 @@ import {
 } from "@/shared/constants/seo.constants";
 import { Providers } from "./providers";
 import { ThemeScript } from "@/features/theme/components/ThemeScript";
+import { PWAProvider } from "next-pwa-pack";
 
 export const metadata: Metadata = {
   title: {
@@ -58,7 +59,9 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <PWAProvider serverRevalidation={{ enabled: false }}>
+          <Providers>{children}</Providers>
+        </PWAProvider>
       </body>
     </html>
   );
