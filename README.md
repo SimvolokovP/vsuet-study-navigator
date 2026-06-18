@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# "Цифровой навигатор по твоей учебе" ВГУИТ
 
-## Getting Started
+### Description
 
-First, run the development server:
+A university progressive web application for searching class schedules. The application allows searching for classes using various filters: group, subgroup, teacher and audience. It also supports intelligent search by teacher name and the ability to view student academic performance. The application provides access to the institution's reference information. Using the application, students and instructors can search for available audience and book them (authentication required).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+frontend: Next JS + zustand + @tanstack/react-query + zod + axios + dayjs + framer-motion
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Screenshots:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Main page of the app with carousel navigation.
+![Main Page](screens/mainPage.png)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Schedule page of the app (schedule list mode).
+![Schedule Page](screens/schedulePage1.png)
+- Schedule page of the app (schedule calendar mode).
+![Schedule Page2](screens/schedulePage2.png)
+- Page with search sidebar.
+![Search Page](screens/searchBar.png)
+- Page with student academic performance.
+![Academic Page](screens/academicPage.png)
+- Direcory Page.
+![Direcory Page](screens/directoryPage.png)
+- User profile page.
+![Profile page](screens/profilePage.png)
+- Page for search free audiences.
+![Free audiences page](screens/freeAudiencesPage.png)
+![Free audiences page 2](screens/freeAudiencesPage2.png)
+![Free audiences page 3](screens/freeAudiencesPage3.png)
+- AI Applicant chat with GigaChat api.
+![Applicant chat page](screens/applicantChatPage.png)
+- Auth page of the app.
+![Auth Page](screens/authPage.png)
+- Light and dark mode.
+![Light and dark mode](screens/themeMode.png)
