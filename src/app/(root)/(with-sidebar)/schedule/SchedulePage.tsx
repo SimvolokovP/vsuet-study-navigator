@@ -98,14 +98,12 @@ export function SchedulePage() {
         </div>
       }
     >
-      {!error && (
-        <ViewModeToggler
-          disabled={isPending || !!error}
-          onViewModeChange={setViewMode}
-          viewMode={viewMode}
-          isPending={isPending}
-        />
-      )}
+      <ViewModeToggler
+        disabled={isPending || !!error}
+        onViewModeChange={setViewMode}
+        viewMode={viewMode}
+        isPending={isPending}
+      />
       <ScheduleWrapper
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}

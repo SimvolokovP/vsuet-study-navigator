@@ -30,20 +30,6 @@ export function useWeeklySchedule(
       } catch (error) {
         console.log("Network error, trying SW cache...");
 
-        if (!navigator.onLine) {
-          const cachedData = await getFromServiceWorkerCache(
-            group,
-            subGroup,
-            range.start,
-            range.end,
-          );
-
-          if (cachedData) {
-            console.log("Returning cached data from SW");
-            return cachedData;
-          }
-        }
-
         throw error;
       }
     },
@@ -56,27 +42,4 @@ export function useWeeklySchedule(
     error: weeklyScheduleQuery.error,
     isSuccess: weeklyScheduleQuery.isSuccess,
   };
-}
-
-async function getFromServiceWorkerCache(
-  group: string,
-  subGroup: string,
-  startDate: string,
-  endDate: string,
-) {
-  try {
-    const url = `/api/schedule/weekly?group=${encodeURIComponent(group)}&subgroup=${encodeURIComponent(subGroup)}&start=${startDate}&end=${endDate}`;
-
-    const cache = await caches.open("api-data-v1.0.3");
-    const cachedResponse = await cache.match(url);
-
-    if (cachedResponse && cachedResponse.ok) {
-      const data = await cachedResponse.json();
-      return data;
-    }
-    return null;
-  } catch (error) {
-    console.error("Error reading from SW cache:", error);
-    return null;
-  }
 }
