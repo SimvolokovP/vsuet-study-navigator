@@ -11,27 +11,27 @@ frontend: Next JS + zustand + @tanstack/react-query + zod + axios + dayjs + fram
 ### Screenshots:
 
 - Main page of the app with carousel navigation.
-![Main Page](screens/public/mainPage.png)
+![Main Page](public/screens/mainPage.png)
 
 - Schedule page of the app (schedule list mode).
-![Schedule Page](screens/public/schedulePage1.png)
+![Schedule Page](public/screens/schedulePage1.png)
 - Schedule page of the app (schedule calendar mode).
-![Schedule Page2](screens/public/schedulePage2.png)
+![Schedule Page2](public/screens/schedulePage2.png)
 - Page with search sidebar.
-![Search Page](screens/public/searchBar.png)
+![Search Page](public/screens/searchBar.png)
 - Page with student academic performance.
-![Academic Page](screens/public/academicPage.png)
+![Academic Page](public/screens/academicPage.png)
 - Direcory Page.
-![Direcory Page](screens/public/directoryPage.png)
+![Direcory Page](public/screens/directoryPage.png)
 - User profile page.
-![Profile page](screens/public/profilePage.png)
+![Profile page](public/screens/profilePage.png)
 - Page for search free audiences.
-![Free audiences page](screens/public/freeAudiencesPage.png)
-![Free audiences page 2](screens/public/freeAudiencesPage2.png)
-![Free audiences page 3](screens/public/freeAudiencesPage3.png)
+![Free audiences page](public/screens/freeAudiencesPage.png)
+![Free audiences page 2](public/screens/freeAudiencesPage2.png)
+![Free audiences page 3](public/screens/freeAudiencesPage3.png)
 - AI Applicant chat with GigaChat api.
-![Applicant chat page](screens/public/applicantChatPage.png)
+![Applicant chat page](public/screens/applicantChatPage.png)
 - Auth page of the app.
-![Auth Page](screens/public/authPage.png)
+![Auth Page](public/screens/authPage.png)
 - Light and dark mode.
-![Light and dark mode](screens/public/themeMode.png)
+![Light and dark mode](public/screens/themeMode.png)
