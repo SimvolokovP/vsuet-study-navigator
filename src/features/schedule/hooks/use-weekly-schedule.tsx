@@ -34,6 +34,7 @@ export function useWeeklySchedule(
       }
     },
     enabled: !!group && !!subGroup,
+    retry: 3,
   });
 
   return {

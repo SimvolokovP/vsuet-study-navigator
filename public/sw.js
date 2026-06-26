@@ -1,4 +1,4 @@
-const VERSION = 'v2.0.0'; 
+const VERSION = 'v3.0.1'; 
 const HTML_CACHE_NAME = `html-cache-${VERSION}`;
 const API_CACHE_NAME = `api-data-${VERSION}`;
 const STATIC_ASSETS_CACHE = `static-assets-${VERSION}`;
