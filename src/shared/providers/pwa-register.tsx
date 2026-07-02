@@ -9,7 +9,7 @@ interface PWAComponentProps {
 export function PWAComponent({ enabled = true }: PWAComponentProps) {
   useEffect(() => {
     if (!enabled) {
-      console.log("ℹ️ Регистрация Service Worker отключена через настройки.");
+      console.log("Регистрация Service Worker отключена через настройки.");
       return;
     }
 
