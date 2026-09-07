@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Check, ChevronsUpDown, Loader2, X } from "lucide-react";
 import { cn } from "@/shared/utils/cn";
@@ -71,7 +69,7 @@ export function AutoComplete({
         </label>
       )}
       <div className="flex items-center gap-2">
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover open={open} onOpenChange={setOpen} modal={true}>
           <PopoverTrigger asChild>
             <Button
               type="button"
@@ -103,9 +101,11 @@ export function AutoComplete({
             </Button>
           </PopoverTrigger>
           <PopoverContent
-            className="w-[--radix-popover-trigger-width] p-0"
+            className="w-[--radix-popover-trigger-width] p-0 pointer-events-auto"
             align="start"
             sideOffset={4}
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
           >
             <Command
               filter={(value, search) => {
@@ -115,7 +115,7 @@ export function AutoComplete({
               }}
             >
               <CommandInput placeholder="Поиск..." />
-              <CommandList>
+              <CommandList className="max-h-75 overflow-y-auto">
                 <CommandEmpty>Ничего не найдено.</CommandEmpty>
                 <CommandGroup>
                   {options.map((opt) => (
