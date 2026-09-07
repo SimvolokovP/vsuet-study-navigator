@@ -3,8 +3,8 @@
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 
 const numberFormSchema = z.object({
   number: z

@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/shared/components/ui/accordion";
 import { IRatingItem } from "@/shared/types/rating.model";
 import { cn } from "@/shared/utils/cn";
 

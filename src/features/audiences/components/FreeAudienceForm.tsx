@@ -2,14 +2,14 @@
 
 import dayjs from "dayjs";
 import { FormEvent, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { AutoComplete } from "@/components/ui/auto-complete";
-import { Select } from "@/components/ui/select";
+import { Button } from "@/shared/components/ui/button";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
+import { Select } from "@/shared/components/ui/select";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/shared/components/ui/popover";
 import { getAudiencesOptions } from "@/shared/helpers/getAudiencesOptions";
 import { getTimeSlotsOptions } from "@/shared/helpers/getTimeSlotsOptions";
 import { useAudiencesList } from "../hooks/use-audiences-list";

@@ -1,15 +1,15 @@
 "use client";
 
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
-import { AutoComplete } from "@/components/ui/auto-complete";
-import { Select } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
+import { Select } from "@/shared/components/ui/select";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 import { useGroupsList } from "@/features/groups/hooks/use-groups-list";
 
 const formSchema = z.object({

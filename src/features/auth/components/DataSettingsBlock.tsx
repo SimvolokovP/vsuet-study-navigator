@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { AutoComplete } from "@/components/ui/auto-complete";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Select } from "@/shared/components/ui/select";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
 import { useGroupsList } from "@/features/groups/hooks/use-groups-list";
 import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 import {
@@ -17,8 +17,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@/shared/components/ui/accordion";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 
 const scheduleFormSchema = z.object({
   group: z.string().optional(),

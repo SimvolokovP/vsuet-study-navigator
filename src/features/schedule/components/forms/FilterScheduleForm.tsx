@@ -4,14 +4,14 @@ import { IFilter } from "@/shared/types/filter.model";
 import { FormEvent, useEffect, useState } from "react";
 import { z } from "zod";
 import { useFilterSearch } from "../../hooks/use-filter-search";
-import { AutoComplete } from "@/components/ui/auto-complete";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
 import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
-import { Select } from "@/components/ui/select";
+import { Select } from "@/shared/components/ui/select";
 import { getTeachersOptions } from "@/shared/helpers/getTeachersOptions";
 import { getAudiencesOptions } from "@/shared/helpers/getAudiencesOptions";
-import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/Loader";
-import { Divider } from "@/components/ui/divider";
+import { Button } from "@/shared/components/ui/button";
+import { Loader } from "@/shared/components/ui/Loader";
+import { Divider } from "@/shared/components/ui/divider";
 import { useFilterScheduleStore } from "@/store/use-filter-schedule.store";
 
 const formSchema = z

@@ -2,8 +2,8 @@ import { useCallback } from "react";
 import dayjs from "dayjs";
 import { cn } from "@/shared/utils/cn";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Button } from "@/shared/components/ui/button";
 
 interface ResetDateButtonProps {
   onDateChange: (date: string) => void;

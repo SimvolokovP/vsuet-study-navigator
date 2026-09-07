@@ -7,9 +7,9 @@ import { useCallback } from "react";
 import { getGroupedSubjects } from "@/shared/helpers/scheduleHelpers";
 import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import { WeekDays } from "./WeekDays";
-import { Divider } from "@/components/ui/divider";
+import { Divider } from "@/shared/components/ui/divider";
 import { ScheduleListItem } from "./ScheduleListItem";
-import { Swipable } from "@/components/ui/Swipable";
+import { Swipable } from "@/shared/components/ui/Swipable";
 import { ScheduleListSkeleton } from "../skeletons/ScheduleListSkeleton";
 
 interface ScheduleListWrapperProps {

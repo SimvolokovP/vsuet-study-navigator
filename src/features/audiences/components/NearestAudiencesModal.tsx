@@ -1,6 +1,6 @@
 "use client";
 
-import { Modal, ModalContent, ModalTitle } from "@/components/ui/modal";
+import { Modal, ModalContent, ModalTitle } from "@/shared/components/ui/modal";
 
 interface NearestAudienceItem {
   audience: {

@@ -17,7 +17,7 @@ import {
   ModalContent,
   ModalTitle,
   ModalHeader,
-} from "@/components/ui/modal";
+} from "@/shared/components/ui/modal";
 import { ScheduleCalendarSkeleton } from "../skeletons/ScheduleCalendarSkeleton";
 
 interface ScheduleCalendarProps {

@@ -7,8 +7,8 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from "@/components/ui/modal";
-import { Button } from "@/components/ui/button";
+} from "@/shared/components/ui/modal";
+import { Button } from "@/shared/components/ui/button";
 import { NumberAuthForm } from "./NumberAuthForm";
 
 interface NumberAuthModalProps {

@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { Funnel } from "lucide-react";
 import { Layout } from "@/layout/Layout";
-import { Button } from "@/components/ui/button";
-import { SidePanel } from "@/components/ui/side-panel";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
+import { Drawer } from "@/shared/components/ui/drawer";
+import { Badge } from "@/shared/components/ui/badge";
 import { FreeAudienceSearchMode } from "@/shared/types/subject.model";
 import { FilterFreeAudienceForm } from "@/features/audiences/components/FreeAudienceForm";
-import { Toggler } from "@/components/ui/toggler";
+import { Toggler } from "@/shared/components/ui/toggler";
 import { useFreeAudienceByName } from "@/features/audiences/hooks/use-free-audience-by-name";
 import { useFreeAudiencesByParams } from "@/features/audiences/hooks/use-free-audiences-by-params";
 import { FreeAudienceParamsResult } from "@/features/audiences/components/FreeAudienceParamsResult";
 import { FreeAudienceNameResult } from "@/features/audiences/components/FreeAudienceNameResult";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 
 const toggleItems = [
@@ -166,7 +166,7 @@ export function FreeAudienceSearchPage() {
         )}
       </div>
 
-      <SidePanel
+      <Drawer
         isOpen={isModalFilterForm}
         onClose={() => setIsModalFilterForm(false)}
       >
@@ -182,7 +182,7 @@ export function FreeAudienceSearchPage() {
           handleFilterReset={handleFilterReset}
           searchTriggered={searchTriggered}
         />
-      </SidePanel>
+      </Drawer>
     </Layout>
   );
 }

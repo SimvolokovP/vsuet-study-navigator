@@ -13,7 +13,7 @@ import {
 import { TypeSchduleType } from "@/features/schedule/types/schedule.models";
 import { RemainingTimeBadge } from "../RemainingTimeBadge";
 import Link from "next/link";
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 
 export function ScheduleListItem({
   subjects,

@@ -4,10 +4,10 @@ import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
-import { AutoComplete } from "@/components/ui/auto-complete";
-import { Select } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
+import { Select } from "@/shared/components/ui/select";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 import { useMockGroupsList } from "@/features/groups/hooks/mock/use-mock-groups-list";
 import { toast } from "sonner";
 

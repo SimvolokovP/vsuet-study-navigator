@@ -1,12 +1,11 @@
 "use client";
 
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/shared/components/ui/tooltip";
 import { SystemThemeListener } from "@/features/theme/components/SystemThemeListener";
 import { ThemeInitializer } from "@/features/theme/components/ThemeInitializer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren, useState } from "react";
 import { Toaster } from "sonner";
-import { ConnectivityListener } from "./connectivity-listener";
 
 export function Providers({ children }: PropsWithChildren) {
   const [client] = useState(
@@ -29,7 +28,7 @@ export function Providers({ children }: PropsWithChildren) {
       <ThemeInitializer />
       <SystemThemeListener />
       <Toaster position="top-center" theme="system" />
-      <ConnectivityListener />
+      {/* <ConnectivityListener /> */}
       <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
     </QueryClientProvider>
   );

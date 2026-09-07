@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import { getWeekDaysToList, getWeekType } from "@/shared/helpers/dateHelpers";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MONTH_NAMES_GENITIVE, WEEKDAY_NAMES } from "@/shared/data/date.data";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 
 interface WeekDaysProps {
   selectedDate: string;

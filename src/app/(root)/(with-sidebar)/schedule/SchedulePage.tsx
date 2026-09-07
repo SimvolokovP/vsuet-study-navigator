@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { PAGES } from "@/config/pages-url.config";
+import { Button } from "@/shared/components/ui/button";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { GroupAuthModal } from "@/features/auth/components/GroupAuthModal";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";

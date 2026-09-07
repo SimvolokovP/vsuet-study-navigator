@@ -3,9 +3,9 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
-import { PAGES } from "@/config/pages-url.config";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { PAGES } from "@/shared/config/pages-url.config";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 import { useLogin } from "../hooks/use-login";
 
 const credentialsSchema = z.object({

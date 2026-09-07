@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
@@ -35,31 +33,20 @@ const ModalContent = React.forwardRef<
       aria-describedby={props["aria-describedby"] || undefined}
       ref={ref}
       className={cn(
-        "fixed z-50 grid gap-4 bg-card shadow-lg",
-
-        "inset-x-0 bottom-0 top-auto data-[state=open]:animate-in data-[state=closed]:animate-out",
-        "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom rounded-t-xl",
-
-        "sm:inset-auto sm:left-[50%] sm:top-[50%] sm:bottom-auto sm:translate-x-[-50%] sm:translate-y-[-50%]",
-        "sm:max-w-lg sm:w-full sm:rounded-lg",
-        "sm:data-[state=open]:animate-in sm:data-[state=closed]:animate-out",
-        "sm:data-[state=closed]:fade-out-0 sm:data-[state=open]:fade-in-0",
-        "sm:duration-200",
-
-        "border-t sm:border border-border",
-        "max-h-[90vh] overflow-y-auto",
-
+        "fixed z-50 outline-none w-[calc(100%-1.25rem)] max-w-lg p-0 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "duration-200",
         className,
       )}
       {...props}
     >
-      {/* <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-muted-foreground/30 rounded-full sm:hidden" /> */}
-
-      {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Закрыть</span>
-      </DialogPrimitive.Close>
+      <div className="flex h-full flex-col border border-border bg-popover p-6 text-popover-foreground rounded-xl shadow-xl max-h-[calc(92dvh-1.25rem)]">
+        {children}
+        <DialogPrimitive.Close className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Закрыть</span>
+        </DialogPrimitive.Close>
+      </div>
     </DialogPrimitive.Content>
   </ModalPortal>
 ));
@@ -71,8 +58,7 @@ const ModalHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
-      "px-4 pt-6 pb-2 sm:px-6 sm:pt-6",
+      "flex flex-col space-y-1.5 text-left shrink-0 mb-6",
       className,
     )}
     {...props}
@@ -86,8 +72,7 @@ const ModalFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-2",
-      "px-4 pb-6 pt-2 sm:px-6 sm:pb-6",
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-2 mt-6 shrink-0",
       className,
     )}
     {...props}
@@ -102,8 +87,7 @@ const ModalTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight text-inner",
-      "px-4 sm:px-0",
+      "text-lg font-semibold leading-none tracking-tight text-foreground",
       className,
     )}
     {...props}
@@ -117,7 +101,7 @@ const ModalDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", "px-4 sm:px-0", className)}
+    className={cn("text-sm text-muted-foreground mt-1.5", className)}
     {...props}
   />
 ));

@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useTeacherSchedule } from "@/features/schedule/hooks/use-teacher-schedule";

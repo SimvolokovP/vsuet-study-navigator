@@ -1,7 +1,7 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
-import { Toggler } from "@/components/ui/toggler";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Toggler } from "@/shared/components/ui/toggler";
 import { useThemeStore } from "@/features/theme/store/use-theme-store";
 import { Moon, Sun } from "lucide-react";
 

@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Modal,
   ModalContent,
   ModalTitle,
   ModalClose,
   ModalTrigger,
-} from "@/components/ui/modal";
+} from "@/shared/components/ui/modal";
 import { Trash2 } from "lucide-react";
 
 interface ConfirmDeleteModalProps {

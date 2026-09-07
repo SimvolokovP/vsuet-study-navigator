@@ -1,4 +1,4 @@
-import { Toggler } from "@/components/ui/toggler";
+import { Toggler } from "@/shared/components/ui/toggler";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { cn } from "@/shared/utils/cn";
 import { CalendarFold, List } from "lucide-react";

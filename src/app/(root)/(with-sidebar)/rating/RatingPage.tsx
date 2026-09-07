@@ -8,7 +8,7 @@ import { RatingCard } from "@/features/rating/components/RatingCard";
 import { TRatingMode } from "@/features/rating/types/rating.models";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import { NumberAuthModal } from "@/features/auth/components/NumberAuthModal";
 import { Search, UserCog } from "lucide-react";
 

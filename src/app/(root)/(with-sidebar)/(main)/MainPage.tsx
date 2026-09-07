@@ -1,10 +1,9 @@
 "use client";
 
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { Layout } from "@/layout/Layout";
 import {
   Award,
-  BotMessageSquare,
   Calendar,
   CalendarSearch,
   DoorOpen,
@@ -15,11 +14,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/shared/components/ui/carousel";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
 
 export function MainPage() {
   const getGreeting = () => {
@@ -106,22 +103,6 @@ export function MainPage() {
               <CarouselPrevious className="-left-4 hidden md:flex" />
               <CarouselNext className="-right-4 hidden md:flex" />
             </Carousel>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="font-bold">Для абитуриентов</div>
-
-            <Badge className="w-14.5 h-6.5" text="Новинка">
-              <Link
-                target="_blank"
-                href={"https://vsuet-study-applicant-chat-sbc7.vercel.app"}
-              >
-                <div className="cursor-pointer bg-[#54D4C0]/10 text-[#54D4C0] rounded-xl p-4 flex flex-col gap-3 h-full transition-transform active:scale-95">
-                  <BotMessageSquare size={32} />
-                  <div className="font-semibold leading-tight">ИИ помощник</div>
-                </div>
-              </Link>
-            </Badge>
           </div>
         </div>
       </div>

@@ -8,11 +8,11 @@ import { useState } from "react";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
 import { Layout } from "@/layout/Layout";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
-import { SidePanel } from "@/components/ui/side-panel";
+import { Drawer } from "@/shared/components/ui/drawer";
 import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-schedule";
 import { FilterScheduleForm } from "@/features/schedule/components/forms/FilterScheduleForm";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/shared/components/ui/badge";
+import { Button } from "@/shared/components/ui/button";
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 
 export function ScheduleSearchPage() {
@@ -123,7 +123,7 @@ export function ScheduleSearchPage() {
           Выберете фильтры для поиска &#128270;
         </div>
       )}
-      <SidePanel
+      <Drawer
         isOpen={isModalFilterForm}
         onClose={() => setIsModalFilterForm(false)}
       >
@@ -134,7 +134,7 @@ export function ScheduleSearchPage() {
             handleFilterReset={handleFilterReset}
           />
         )}
-      </SidePanel>
+      </Drawer>
     </Layout>
   );
 }

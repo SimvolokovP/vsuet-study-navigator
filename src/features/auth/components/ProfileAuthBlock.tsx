@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { PAGES } from "@/config/pages-url.config";
+import { Button } from "@/shared/components/ui/button";
+import { Skeleton } from "@/shared/components/ui/skeleton";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { LogoutConfirm } from "@/widgets/LogoutConfirm";
 import Link from "next/link";

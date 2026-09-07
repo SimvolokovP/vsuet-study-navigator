@@ -1,4 +1,4 @@
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 import {
   LucideIcon,
   Settings,

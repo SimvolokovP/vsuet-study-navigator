@@ -5,9 +5,9 @@ import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 import { FormEvent, useState } from "react";
 import { z } from "zod";
 import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
-import { AutoComplete } from "@/components/ui/auto-complete";
-import { Select } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { AutoComplete } from "@/shared/components/ui/auto-complete";
+import { Select } from "@/shared/components/ui/select";
+import { Button } from "@/shared/components/ui/button";
 import { useGroupsList } from "@/features/groups/hooks/use-groups-list";
 
 const groupFormSchema = z.object({

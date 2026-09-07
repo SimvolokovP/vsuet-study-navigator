@@ -1,12 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Modal,
   ModalContent,
   ModalTitle,
   ModalClose,
-} from "@/components/ui/modal";
+} from "@/shared/components/ui/modal";
 import dayjs from "dayjs";
 
 interface ConfirmBookingModalProps {

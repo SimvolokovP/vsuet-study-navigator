@@ -1,6 +1,6 @@
 "use client";
 
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { MENU } from "@/shared/data/menu.data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +8,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/shared/components/ui/tooltip";
 import { cn } from "@/shared/utils/cn";
 import { Logo } from "@/widgets/Logo";
 import { LogIn, LogOut } from "lucide-react";

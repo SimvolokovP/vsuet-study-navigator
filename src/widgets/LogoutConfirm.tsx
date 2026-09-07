@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Modal,
   ModalClose,
@@ -8,7 +8,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
-} from "@/components/ui/modal";
+} from "@/shared/components/ui/modal";
 import { PropsWithChildren } from "react";
 import { useLogout } from "@/features/auth/hooks/use-logout";
 import { Loader2 } from "lucide-react";

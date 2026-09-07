@@ -5,20 +5,20 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { CalendarX } from "lucide-react";
 import { Layout } from "@/layout/Layout";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
+} from "@/shared/components/ui/accordion";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 
-import { PAGES } from "@/config/pages-url.config";
+import { PAGES } from "@/shared/config/pages-url.config";
 import { useMyReservations } from "@/features/audiences/hooks/use-my-reservations";
 import { useDeleteReservation } from "@/features/audiences/hooks/use-delete-reservation";
 import { ConfirmDeleteReservationModal } from "@/features/audiences/components/ConfirmDeleteReservationModal";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/shared/components/ui/skeleton";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 
 export function MyReservationsPage() {

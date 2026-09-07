@@ -2,12 +2,12 @@
 
 import dayjs from "dayjs";
 import { CalendarIcon, ChevronLeft, ChevronRight, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/shared/components/ui/popover";
 import { cn } from "@/shared/utils/cn";
 
 import "dayjs/locale/ru";

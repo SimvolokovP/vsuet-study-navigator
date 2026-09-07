@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { PAGES } from "@/config/pages-url.config";
-import { Divider } from "@/components/ui/divider";
+import { PAGES } from "@/shared/config/pages-url.config";
+import { Divider } from "@/shared/components/ui/divider";
 import { Logo } from "@/widgets/Logo";
 import { CredentialsAuthForm } from "@/features/auth/components/CredentialsAuthForm";
 
