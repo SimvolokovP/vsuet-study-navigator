@@ -1,8 +1,8 @@
 "use client";
 
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { ThemeToggle } from "@/widgets/ThemeToggle";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
+import { useUserLocalStorage } from "@/features/auth/store/use-user-local-storage.store";
 import { useEffect, useState } from "react";
 import { ProfileAuthBlock } from "@/features/auth/components/ProfileAuthBlock";
 import { DataSettingsBlock } from "@/features/auth/components/DataSettingsBlock";

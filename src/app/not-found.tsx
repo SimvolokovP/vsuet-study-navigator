@@ -1,6 +1,6 @@
 import { Button } from "@/shared/components/ui/button";
 
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 
 import Link from "next/link";

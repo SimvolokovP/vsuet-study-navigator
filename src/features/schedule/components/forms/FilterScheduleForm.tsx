@@ -12,7 +12,7 @@ import { getAudiencesOptions } from "@/shared/helpers/getAudiencesOptions";
 import { Button } from "@/shared/components/ui/button";
 import { Loader } from "@/shared/components/ui/Loader";
 import { Divider } from "@/shared/components/ui/divider";
-import { useFilterScheduleStore } from "@/store/use-filter-schedule.store";
+import { useFilterScheduleStore } from "@/features/schedule/store/use-filter-schedule.store";
 
 const formSchema = z
   .object({

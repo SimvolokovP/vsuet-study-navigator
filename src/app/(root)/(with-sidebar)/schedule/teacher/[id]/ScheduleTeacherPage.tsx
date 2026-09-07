@@ -5,7 +5,7 @@ import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper"
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useTeacherSchedule } from "@/features/schedule/hooks/use-teacher-schedule";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import dayjs from "dayjs";
 import { useState } from "react";
 

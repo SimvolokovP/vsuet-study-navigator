@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { Funnel } from "lucide-react";
 import { useState } from "react";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper";
 import { Drawer } from "@/shared/components/ui/drawer";
 import { useSearchedSchedule } from "@/features/schedule/hooks/use-searched-schedule";

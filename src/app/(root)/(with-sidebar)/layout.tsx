@@ -1,5 +1,5 @@
-import { MobileNavigation } from "@/layout/MobileNavigation";
-import { Sidebar } from "@/layout/Sidebar";
+import { MobileNavigation } from "@/shared/layout/MobileNavigation";
+import { Sidebar } from "@/shared/layout/Sidebar";
 import { cn } from "@/shared/utils/cn";
 
 export default function Layout({

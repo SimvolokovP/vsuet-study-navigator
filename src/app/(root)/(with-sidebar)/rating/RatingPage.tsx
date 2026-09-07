@@ -3,10 +3,10 @@
 import { IRatingItem } from "@/shared/types/rating.model";
 import { MOCK_RATING_DATA } from "@/shared/data/mockSubjects.data";
 import { useState } from "react";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { RatingCard } from "@/features/rating/components/RatingCard";
 import { TRatingMode } from "@/features/rating/types/rating.models";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
+import { useUserLocalStorage } from "@/features/auth/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import { Button } from "@/shared/components/ui/button";
 import { NumberAuthModal } from "@/features/auth/components/NumberAuthModal";

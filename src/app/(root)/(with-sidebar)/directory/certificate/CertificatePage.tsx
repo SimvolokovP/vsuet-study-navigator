@@ -1,7 +1,7 @@
 "use client";
 
 import { CertificateForm } from "@/features/directory/components/forms/CertificateForm";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 
 export function CertificatePage() {
   return (

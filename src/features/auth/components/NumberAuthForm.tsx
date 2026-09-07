@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { z } from "zod";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
+import { useUserLocalStorage } from "@/features/auth/store/use-user-local-storage.store";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 

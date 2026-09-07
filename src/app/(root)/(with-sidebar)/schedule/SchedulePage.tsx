@@ -7,8 +7,8 @@ import { ScheduleWrapper } from "@/features/schedule/components/ScheduleWrapper"
 import { ViewModeToggler } from "@/features/schedule/components/ViewModeToggler";
 import { useWeeklySchedule } from "@/features/schedule/hooks/use-weekly-schedule";
 import { TypeViewMode } from "@/features/schedule/types/schedule.models";
-import { Layout } from "@/layout/Layout";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
+import { Layout } from "@/shared/layout/Layout";
+import { useUserLocalStorage } from "@/features/auth/store/use-user-local-storage.store";
 import { ErrorMessage } from "@/widgets/ErrorMessage";
 import dayjs from "dayjs";
 import { CalendarCog, Search } from "lucide-react";

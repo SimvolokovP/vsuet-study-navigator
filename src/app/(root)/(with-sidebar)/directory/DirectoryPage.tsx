@@ -2,7 +2,7 @@
 
 import { PAGES } from "@/shared/config/pages-url.config";
 import { DirectoryItem } from "@/features/directory/components/DirectoryItem";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { BriefcaseBusiness, Landmark, Newspaper, UserCog } from "lucide-react";
 
 export function DirectoryPage() {

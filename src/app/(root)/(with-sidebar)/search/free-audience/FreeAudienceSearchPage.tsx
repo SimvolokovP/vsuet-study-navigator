@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Funnel } from "lucide-react";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/shared/components/ui/button";
 import { Drawer } from "@/shared/components/ui/drawer";
 import { Badge } from "@/shared/components/ui/badge";

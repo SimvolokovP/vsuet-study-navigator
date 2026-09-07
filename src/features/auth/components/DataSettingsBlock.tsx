@@ -9,7 +9,7 @@ import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 import {
   IUserInLocalStorage,
   useUserLocalStorage,
-} from "@/store/use-user-local-storage.store";
+} from "@/features/auth/store/use-user-local-storage.store";
 import { FormEvent, useState, useCallback } from "react";
 import { z } from "zod";
 import {

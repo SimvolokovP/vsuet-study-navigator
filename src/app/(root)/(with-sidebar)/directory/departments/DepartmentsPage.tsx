@@ -1,7 +1,7 @@
 "use client";
 
 import { Column, DataTable } from "@/shared/components/ui/data-table";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { useState } from "react";
 
 interface Department {

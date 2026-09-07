@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Column, DataTable } from "@/shared/components/ui/data-table";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { cn } from "@/shared/utils/cn";
 
 interface Statement {

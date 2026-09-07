@@ -4,7 +4,7 @@ import { getGroupsOptions } from "@/shared/helpers/getGroupsOptions";
 
 import { FormEvent, useState } from "react";
 import { z } from "zod";
-import { useUserLocalStorage } from "@/store/use-user-local-storage.store";
+import { useUserLocalStorage } from "@/features/auth/store/use-user-local-storage.store";
 import { AutoComplete } from "@/shared/components/ui/auto-complete";
 import { Select } from "@/shared/components/ui/select";
 import { Button } from "@/shared/components/ui/button";

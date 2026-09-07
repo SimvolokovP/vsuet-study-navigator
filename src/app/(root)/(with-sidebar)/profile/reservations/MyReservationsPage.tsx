@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import { CalendarX } from "lucide-react";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/shared/components/ui/button";
 import {
   Accordion,

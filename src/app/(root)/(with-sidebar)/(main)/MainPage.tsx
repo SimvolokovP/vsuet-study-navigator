@@ -1,7 +1,7 @@
 "use client";
 
 import { PAGES } from "@/shared/config/pages-url.config";
-import { Layout } from "@/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import {
   Award,
   Calendar,
